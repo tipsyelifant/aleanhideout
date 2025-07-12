@@ -1,41 +1,69 @@
 body {
     font-family: sans-serif;
     text-align: center;
-    background-color: #f0f0f0;
+    background: url('images/chalk background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
 }
 
 #game-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
 }
 
-#start-screen h1 {
-    font-size: 3em;
+#start-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#character-lineup {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#character-lineup img {
+    width: 100px;
+    margin: 0 10px;
+}
+
+#main-logo {
+    width: 400px;
     margin-bottom: 10px;
 }
 
-#start-screen h2 {
-    font-size: 1.5em;
+#subtitle-logo {
+    width: 300px;
     margin-bottom: 20px;
-    color: #555;
 }
 
 #start-btn {
     padding: 15px 30px;
     font-size: 1.2em;
-    background-color: #4CAF50;
+    background-color: #d9534f;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-bottom: 20px;
 }
 
 #start-btn:hover {
-    background-color: #45a049;
+    background-color: #c9302c;
+}
+
+#game-description {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#game-description p {
+    margin-bottom: 1em;
 }
 
 #registration-gate input {
@@ -183,16 +211,25 @@ body {
 }
 
 @media (max-width: 600px) {
-    #game-container {
-        padding: 10px;
+    #character-lineup {
+        flex-wrap: wrap;
     }
 
-    #start-screen h1 {
-        font-size: 2em;
+    #character-lineup img {
+        width: 80px;
+        margin: 5px;
     }
 
-    #start-screen h2 {
-        font-size: 1em;
+    #main-logo {
+        width: 80%;
+    }
+
+    #subtitle-logo {
+        width: 70%;
+    }
+
+    #game-description {
+        font-size: 14px;
     }
 
     #character-illustration {
