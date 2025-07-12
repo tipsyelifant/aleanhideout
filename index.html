@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Lean Hideout</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/puzzle-js@0.3.1/dist/puzzle.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="start-screen">
+            <h1>A Lean Hideout</h1>
+            <h2>The Public Service Kind of Lean</h2>
+            <div id="character-lineup">
+                <!-- Character images will go here -->
+            </div>
+            <button id="start-btn">Enter the Hideout</button>
+        </div>
+
+        <div id="registration-gate" style="display: none;">
+            <h2>Registration Gate</h2>
+            <p>Please fill out the FormSG and enter the verification code below.</p>
+            <a href="#" target="_blank">Link to FormSG</a>
+            <input type="text" id="verification-code" placeholder="Enter your code">
+            <button id="submit-code-btn">Enter the hideout now</button>
+            <p id="error-message" style="color: red; display: none;">Invalid code. Please try again.</p>
+        </div>
+
+        <div id="story-screen" style="display: none;">
+            <img src="" alt="Character illustration" id="character-illustration">
+            <div id="dialogue-box">
+                <p id="dialogue-text"></p>
+                <button id="next-dialogue-btn">Next</button>
+            </div>
+        </div>
+
+        <div id="puzzle-screen" style="display: none;">
+            <h2>Reassemble the Photo</h2>
+            <div id="puzzle-container"></div>
+            <button id="next-puzzle-btn" disabled>Next</button>
+        </div>
+
+        <div id="ingredient-puzzle-screen" style="display: none;">
+            <h2>What is the 5-letter word?</h2>
+            <div id="ingredients-container">
+                <!-- Ingredient icons will go here -->
+            </div>
+            <p>Count the number of each ingredient. Use that number to find the corresponding letter in the ingredient name.</p>
+            <div id="hint-container">
+                <div class="hint-box">
+                    <div class="hint-title">HINT 1</div>
+                    <div class="hint-content">
+                        <p>There are 5 types of ingredients: vegetable, meat, seafood, noodle, and corn.</p>
+                    </div>
+                </div>
+                <div class="hint-box">
+                    <div class="hint-title">HINT 2</div>
+                    <div class="hint-content">
+                        <p>The first letter comes from 'Vegetable'.</p>
+                    </div>
+                </div>
+                <div class="hint-box">
+                    <div class="hint-title">ANSWER</div>
+                    <div class="hint-content">
+                        <p>GEMBA</p>
+                    </div>
+                </div>
+            </div>
+            <input type="text" id="ingredient-answer" placeholder="Enter the 5-letter word">
+            <button id="submit-ingredient-answer-btn">Submit</button>
+            <p id="ingredient-error-message" style="color: red; display: none;">Incorrect. Please try again.</p>
+        </div>
+
+        <div id="answer-reveal-screen" style="display: none;">
+            <h2>Congratulations! The answer is GEMBA.</h2>
+            <p>GEMBA is a Japanese term that means "the real place." In Lean, it refers to the practice of going to the actual place where work is done to see the process, understand the work, and identify opportunities for improvement.</p>
+            <button id="reflection-btn">Continue</button>
+        </div>
+
+        <div id="reflection-screen" style="display: none;">
+            <h2>How can you apply GEMBA in your work?</h2>
+            <ul>
+                <li>Visit the frontlines to understand the challenges your colleagues face.</li>
+                <li>Shadow a colleague for a day to see their work from their perspective.</li>
+                <li>Talk to customers to get their feedback on your services.</li>
+            </ul>
+            <button id="finish-btn">Finish</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/puzzle-js@0.3.1/dist/puzzle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

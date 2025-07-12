@@ -1,0 +1,203 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+#game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#start-screen h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+#start-screen h2 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+#start-btn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#start-btn:hover {
+    background-color: #45a049;
+}
+
+#registration-gate input {
+    padding: 10px;
+    font-size: 1em;
+    margin: 10px;
+    width: 200px;
+}
+
+#registration-gate button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#registration-gate button:hover {
+    background-color: #45a049;
+}
+
+#story-screen {
+    text-align: left;
+}
+
+#character-illustration {
+    max-width: 200px;
+    float: left;
+    margin-right: 20px;
+}
+
+#dialogue-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    overflow: hidden; /* Clear the float */
+}
+
+#dialogue-box p {
+    margin-bottom: 20px;
+}
+
+#next-dialogue-btn {
+    float: right;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#next-dialogue-btn:hover {
+    background-color: #45a049;
+}
+
+#puzzle-container {
+    margin: 20px 0;
+}
+
+#next-puzzle-btn {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#next-puzzle-btn:hover {
+    background-color: #45a049;
+}
+
+#next-puzzle-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#ingredients-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#ingredient-puzzle-screen input {
+    padding: 10px;
+    font-size: 1em;
+    margin: 10px;
+    width: 200px;
+}
+
+#ingredient-puzzle-screen button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#ingredient-puzzle-screen button:hover {
+    background-color: #45a049;
+}
+
+#hint-container {
+    margin: 20px 0;
+}
+
+.hint-box {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.hint-title {
+    background-color: #f0f0f0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.hint-content {
+    padding: 10px;
+    display: none;
+}
+
+#answer-reveal-screen button, #reflection-screen button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#answer-reveal-screen button:hover, #reflection-screen button:hover {
+    background-color: #45a049;
+}
+
+#reflection-screen ul {
+    text-align: left;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+@media (max-width: 600px) {
+    #game-container {
+        padding: 10px;
+    }
+
+    #start-screen h1 {
+        font-size: 2em;
+    }
+
+    #start-screen h2 {
+        font-size: 1em;
+    }
+
+    #character-illustration {
+        float: none;
+        display: block;
+        margin: 0 auto 20px;
+    }
+}
