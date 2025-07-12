@@ -127,19 +127,21 @@ body {
 }
 
 #story-screen {
-    text-align: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 #character-illustration {
-    max-width: 200px;
-    float: left;
-    margin-right: 20px;
+    max-width: 300px;
+    margin-right: 50px;
 }
 
 #dialogue-box {
-    border: 1px solid #ccc;
-    padding: 20px;
-    overflow: hidden; /* Clear the float */
+    max-width: 500px;
+    line-height: 1.6;
 }
 
 #dialogue-box p {

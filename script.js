@@ -11,13 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const CORRECT_CODE = "aleanhideout!";
 
-    const story = [
-        { character: "heidi", text: "Welcome to the kitchen! It's a mess, isn't it?" },
-        { character: "heidi", text: "The customers are angry because their orders are taking too long." },
-        { character: "heidi", text: "I need your help to sort this out. Let's start by looking at this photo..." }
-    ];
-    let currentDialogue = 0;
-
     startBtn.addEventListener('click', () => {
         startScreen.style.display = 'none';
         registrationGate.style.display = 'flex';
@@ -26,28 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
     submitCodeBtn.addEventListener('click', () => {
         if (verificationCodeInput.value.trim().toLowerCase() === CORRECT_CODE) {
             registrationGate.style.display = 'none';
-            storyScreen.style.display = 'block';
-            showDialogue();
+            storyScreen.style.display = 'flex';
         } else {
             errorMessage.style.display = 'block';
         }
     });
 
     nextDialogueBtn.addEventListener('click', () => {
-        currentDialogue++;
-        if (currentDialogue < story.length) {
-            showDialogue();
-        } else {
-            storyScreen.style.display = 'none';
-            document.getElementById('puzzle-screen').style.display = 'block';
-            initializePuzzle();
-        }
+        storyScreen.style.display = 'none';
+        document.getElementById('puzzle-screen').style.display = 'block';
+        initializePuzzle();
     });
-
-    function showDialogue() {
-        dialogueText.textContent = story[currentDialogue].text;
-        // document.getElementById('character-illustration').src = `images/${story[currentDialogue].character}.png`;
-    }
 
     function initializePuzzle() {
         const puzzle = new Puzzle(
