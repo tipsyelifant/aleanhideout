@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dialogueText = document.getElementById('dialogue-text');
     const nextDialogueBtn = document.getElementById('next-dialogue-btn');
 
-    const CORRECT_CODE = "GEMBA"; // Dummy code for now
+    const CORRECT_CODE = "aleanhideout!";
 
     const story = [
         { character: "heidi", text: "Welcome to the kitchen! It's a mess, isn't it?" },
@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     startBtn.addEventListener('click', () => {
         startScreen.style.display = 'none';
-        registrationGate.style.display = 'block';
+        registrationGate.style.display = 'flex';
     });
 
     submitCodeBtn.addEventListener('click', () => {
-        if (verificationCodeInput.value.toUpperCase() === CORRECT_CODE) {
+        if (verificationCodeInput.value.trim().toLowerCase() === CORRECT_CODE) {
             registrationGate.style.display = 'none';
             storyScreen.style.display = 'block';
             showDialogue();

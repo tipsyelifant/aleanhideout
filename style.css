@@ -37,7 +37,7 @@ body {
 #main-logo {
     width: 90%;
     max-width: 1200px;
-    margin-top: -65px;
+    margin-top: -150px;
     margin-bottom: 10px;
     z-index: 1;
     position: relative;
@@ -64,35 +64,54 @@ body {
 }
 
 #game-description {
-    font-size: 18px;
-    max-width: 550px;
-    line-height: 1.3;
-    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 #game-description p {
     margin-bottom: 1em;
 }
 
-#registration-gate input {
+#registration-gate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+#instructions {
+    margin-bottom: 20px;
+}
+
+#instructions p {
+    margin-bottom: 1em;
+}
+
+#verification-code {
     padding: 10px;
     font-size: 1em;
     margin: 10px;
-    width: 200px;
+    width: 250px;
+    border-radius: 5px;
+    border: none;
+    background-color: #dff0d8;
+    color: #3c763d;
 }
 
-#registration-gate button {
+#submit-code-btn {
     padding: 10px 20px;
     font-size: 1em;
-    background-color: #4CAF50;
+    background-color: #5cb85c;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: transform 0.2s;
 }
 
-#registration-gate button:hover {
-    background-color: #45a049;
+#submit-code-btn:hover {
+    transform: scale(1.05);
 }
 
 #story-screen {

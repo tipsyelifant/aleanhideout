@@ -29,12 +29,15 @@
         </div>
 
         <div id="registration-gate" style="display: none;">
-            <h2>Registration Gate</h2>
-            <p>Please fill out the FormSG and enter the verification code below.</p>
-            <a href="#" target="_blank">Link to FormSG</a>
+            <div id="instructions">
+                <p><strong>Important:</strong> Please complete the FormSG to ensure accurate data collection for the virtual puzzle quest. Please do not share your quiz code.</p>
+                <p><strong>Step 1:</strong> Click on the link and fill up the FormSG <a href="https://go.gov.sg/aleanhideout" target="_blank">https://go.gov.sg/aleanhideout</a></p>
+                <p><strong>Step 2:</strong> You will receive an email with the code after you have completed the FormSG</p>
+                <p><strong>Step 3:</strong> Enter the code from your email.</p>
+            </div>
             <input type="text" id="verification-code" placeholder="Enter your code">
             <button id="submit-code-btn">Enter the hideout now</button>
-            <p id="error-message" style="color: red; display: none;">Invalid code. Please try again.</p>
+            <p id="error-message" style="color: red; display: none;">Oops! That code doesn’t look right. Please try again.</p>
         </div>
 
         <div id="story-screen" style="display: none;">
