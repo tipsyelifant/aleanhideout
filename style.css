@@ -75,11 +75,8 @@ body {
 }
 
 #registration-gate {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    text-align: left;
+    padding: 50px;
 }
 
 #instructions {
@@ -101,19 +98,22 @@ body {
     color: #3c763d;
 }
 
+#instructions a {
+    color: #add8e6;
+}
+
 #submit-code-btn {
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #5cb85c;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #d9534f;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.2s;
 }
 
 #submit-code-btn:hover {
-    transform: scale(1.05);
+    background-color: #c9302c;
 }
 
 #story-screen {
