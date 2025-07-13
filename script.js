@@ -27,6 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     nextDialogueBtn.addEventListener('click', () => {
         storyScreen.style.display = 'none';
+        document.getElementById('angry-customer-screen').style.display = 'grid';
+    });
+
+    document.getElementById('customer-scene-next-btn').addEventListener('click', () => {
+        document.getElementById('angry-customer-screen').style.display = 'none';
         document.getElementById('puzzle-screen').style.display = 'block';
         initializePuzzle();
     });
