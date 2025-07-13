@@ -53,21 +53,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function initializePuzzle() {
         const puzzle = new Puzzle(
             'puzzle-container',
-            'https://picsum.photos/800/600', // Placeholder image
+            'images/06_Puzzle1JigsawAfter.png',
             {
                 rows: 3,
                 cols: 3,
-                onComplete: () => {
-                    document.getElementById('next-puzzle-btn').disabled = false;
-                }
+                pieces: [
+                    'images/p1.png', 'images/p2.png', 'images/p3.png',
+                    'images/p4.png', 'images/p5.png', 'images/p6.png',
+                    'images/p7.png', 'images/p8.png', 'images/p9.png'
+                ],
+                onComplete: () => {}
             }
         );
     }
-
-    document.getElementById('next-puzzle-btn').addEventListener('click', () => {
-        document.getElementById('puzzle-screen').style.display = 'none';
-        document.getElementById('ingredient-puzzle-screen').style.display = 'block';
-    });
 
     document.getElementById('submit-ingredient-answer-btn').addEventListener('click', () => {
         const answer = document.getElementById('ingredient-answer').value.toUpperCase();
@@ -77,6 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             document.getElementById('ingredient-error-message').style.display = 'block';
         }
+    });
+
+    document.getElementById('ingredient-puzzle-back-btn').addEventListener('click', () => {
+        document.getElementById('ingredient-puzzle-screen').style.display = 'none';
+        document.getElementById('dialogue-puzzle-intro-screen').style.display = 'flex';
     });
 
     document.getElementById('reflection-btn').addEventListener('click', () => {

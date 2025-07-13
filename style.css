@@ -257,25 +257,29 @@ h2 {
     line-height: 1.6;
 }
 
-#ingredient-puzzle-screen input {
-    padding: 10px;
-    font-size: 1em;
-    margin: 10px;
+#ingredient-puzzle-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#puzzle-container {
+    width: 600px;
+    height: 600px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.puzzle-piece {
     width: 200px;
-}
-
-#ingredient-puzzle-screen button {
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#ingredient-puzzle-screen button:hover {
-    background-color: #45a049;
+    height: 200px;
+    position: absolute;
 }
 
 #hint-container {
