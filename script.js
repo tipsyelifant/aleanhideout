@@ -32,13 +32,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('customer-scene-next-btn').addEventListener('click', () => {
         document.getElementById('angry-customer-screen').style.display = 'none';
-        document.getElementById('puzzle-screen').style.display = 'block';
-        initializePuzzle();
+        document.getElementById('dialogue-puzzle-intro-screen').style.display = 'flex';
     });
 
     document.getElementById('customer-scene-back-btn').addEventListener('click', () => {
         document.getElementById('angry-customer-screen').style.display = 'none';
         storyScreen.style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-intro-back-btn').addEventListener('click', () => {
+        document.getElementById('dialogue-puzzle-intro-screen').style.display = 'none';
+        document.getElementById('angry-customer-screen').style.display = 'flex';
+    });
+
+    document.getElementById('unlock-kit-btn').addEventListener('click', () => {
+        document.getElementById('dialogue-puzzle-intro-screen').style.display = 'none';
+        document.getElementById('ingredient-puzzle-screen').style.display = 'block';
     });
 
     function initializePuzzle() {
