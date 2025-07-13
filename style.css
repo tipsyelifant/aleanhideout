@@ -53,10 +53,10 @@ h2 {
     margin-bottom: 20px;
 }
 
-#start-btn {
+.btn {
     padding: 15px 30px;
     font-size: 1.2em;
-    background-color: #d9534f;
+    background-color: #5cb85c;
     color: white;
     border: none;
     border-radius: 5px;
@@ -64,8 +64,8 @@ h2 {
     margin-bottom: 20px;
 }
 
-#start-btn:hover {
-    background-color: #c9302c;
+.btn:hover {
+    background-color: #4CAF50;
 }
 
 #game-description {
@@ -115,18 +115,6 @@ h2 {
     color: #add8e6;
 }
 
-#submit-code-btn {
-    padding: 15px 30px;
-    background-color: #d9534f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#submit-code-btn:hover {
-    background-color: #c9302c;
-}
 
 #story-screen {
     display: flex;
