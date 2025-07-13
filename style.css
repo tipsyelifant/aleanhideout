@@ -276,10 +276,16 @@ h2 {
     position: relative;
 }
 
+.puzzle-slot {
+    width: 200px;
+    height: 200px;
+    border: 1px dashed white;
+    float: left;
+}
+
 .puzzle-piece {
     width: 200px;
     height: 200px;
-    position: absolute;
 }
 
 #hint-container {
