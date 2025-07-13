@@ -57,11 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 rows: 3,
                 cols: 3,
-                pieces: [
-                    'images/p1.png', 'images/p2.png', 'images/p3.png',
-                    'images/p4.png', 'images/p5.png', 'images/p6.png',
-                    'images/p7.png', 'images/p8.png', 'images/p9.png'
-                ],
                 onComplete: () => {}
             }
         );
