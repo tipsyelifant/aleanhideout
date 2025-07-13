@@ -36,6 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
         initializePuzzle();
     });
 
+    document.getElementById('customer-scene-back-btn').addEventListener('click', () => {
+        document.getElementById('angry-customer-screen').style.display = 'none';
+        storyScreen.style.display = 'flex';
+    });
+
     function initializePuzzle() {
         const puzzle = new Puzzle(
             'puzzle-container',
