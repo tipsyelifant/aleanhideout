@@ -201,16 +201,13 @@ h2 {
 }
 
 .speech-bubble {
-    background-color: white;
-    color: black;
+    color: white;
     padding: 15px;
-    border-radius: 10px;
     max-width: 300px;
 }
 
-.caption {
-    text-transform: uppercase;
-    margin-top: 10px;
+#angry-customer-screen {
+    justify-content: center;
 }
 
 .button-group {
