@@ -436,10 +436,8 @@ h2 {
 }
 
 /* BACK BUTTON AND OTHER SCREENS */
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&display=swap');
-
 .chalk-font {
-    font-family: 'Kalam', cursive;
+    font-family: 'Chalkduster', 'Kalam', cursive;
     font-weight: 700;
     text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 }
