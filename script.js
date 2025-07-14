@@ -35,9 +35,15 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('dialogue-puzzle-intro-screen').style.display = 'flex';
     });
 
+    // FIXED: Single unlock-kit-btn listener with puzzle initialization
     document.getElementById('unlock-kit-btn').addEventListener('click', () => {
         document.getElementById('dialogue-puzzle-intro-screen').style.display = 'none';
-        document.getElementById('ingredient-puzzle-screen').style.display = 'flex';
+        document.getElementById('ingredient-puzzle-screen').style.display = 'block';
+        
+        // Initialize the puzzle when screen becomes visible
+        if (window.initializePuzzle) {
+            window.initializePuzzle();
+        }
     });
 
     document.getElementById('customer-scene-back-btn').addEventListener('click', () => {
@@ -49,23 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('dialogue-puzzle-intro-screen').style.display = 'none';
         document.getElementById('angry-customer-screen').style.display = 'flex';
     });
-
-    document.getElementById('unlock-kit-btn').addEventListener('click', () => {
-        document.getElementById('dialogue-puzzle-intro-screen').style.display = 'none';
-        document.getElementById('ingredient-puzzle-screen').style.display = 'block';
-    });
-
-    function initializePuzzle() {
-        const puzzle = new Puzzle(
-            'puzzle-container',
-            'images/06_Puzzle1JigsawAfter.png',
-            {
-                rows: 3,
-                cols: 3,
-                onComplete: () => {}
-            }
-        );
-    }
 
     document.getElementById('submit-ingredient-answer-btn').addEventListener('click', () => {
         const answer = document.getElementById('ingredient-answer').value.toUpperCase();
