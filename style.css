@@ -254,7 +254,7 @@ h2 {
     overflow: visible;
 }
 
-/* UPDATED: Simple jigsaw puzzle container */
+/* PUZZLE CONTAINER - Main puzzle board */
 #puzzle-container {
     width: 600px;
     height: 400px;
@@ -270,7 +270,7 @@ h2 {
     background-position: center;
 }
 
-/* UPDATED: Simple puzzle pieces for dragging */
+/* PUZZLE PIECES - Seamless when placed */
 .puzzle-piece {
     position: absolute;
     border: 2px solid #FFD700;
@@ -279,6 +279,10 @@ h2 {
     transition: box-shadow 0.2s ease, transform 0.1s ease;
     border-radius: 4px;
     z-index: 10;
+    box-sizing: content-box;
+    margin: 0;
+    padding: 0;
+    display: block;
 }
 
 .puzzle-piece:hover {
@@ -293,24 +297,27 @@ h2 {
     z-index: 100;
 }
 
-/* UPDATED: Placed pieces get green border */
+/* PLACED PIECES - No borders for seamless look */
 .puzzle-piece.placed {
-    border-color: #00FF00;
+    border: none !important;
+    border-radius: 0 !important;
     cursor: default;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* UPDATED: Completed puzzle state */
+/* COMPLETED PUZZLE STATE */
 .puzzle-piece.completed {
     border: none;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
 }
 
-/* Hide puzzle slots since we're not using them for traditional jigsaw */
+/* Hide puzzle slots since we're not using them */
 .puzzle-slot {
     display: none;
 }
 
-/* UPDATED: Always visible hint container */
+/* HINT CONTAINER - Always visible */
 #hint-container {
     margin: 20px 0;
     display: block;
@@ -346,7 +353,7 @@ h2 {
     line-height: 1.5;
 }
 
-/* UPDATED: Always visible answer container */
+/* ANSWER CONTAINER - Always visible */
 #ingredient-answer-container {
     display: block;
     margin: 20px 0;
@@ -412,6 +419,7 @@ h2 {
     margin: 20px auto;
 }
 
+/* MOBILE RESPONSIVENESS */
 @media (max-width: 600px) {
     #character-lineup {
         flex-wrap: wrap;
@@ -449,7 +457,6 @@ h2 {
     }
     
     .puzzle-piece {
-        /* Pieces will be scaled down by JavaScript on mobile */
         min-width: 50px;
         min-height: 40px;
     }
