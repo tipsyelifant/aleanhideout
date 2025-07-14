@@ -1,5 +1,5 @@
 function initializePuzzle() {
-    console.log("Starting snapping jigsaw puzzle...");
+    console.log("Starting jigsaw puzzle with updated dimensions...");
     
     var puzzleContainer = document.querySelector('#ingredient-puzzle-screen #puzzle-container');
     if (!puzzleContainer) {
@@ -7,36 +7,38 @@ function initializePuzzle() {
         return;
     }
 
-    // Clear and setup container
+    // Clear and setup container with NEW DIMENSIONS
     puzzleContainer.innerHTML = '';
-    puzzleContainer.style.width = '600px';
-    puzzleContainer.style.height = '400px';
+    puzzleContainer.style.width = '600px';  // 600px width
+    puzzleContainer.style.height = '340px'; // 340px height (updated)
     puzzleContainer.style.backgroundColor = '#333';
     puzzleContainer.style.border = '3px solid white';
     puzzleContainer.style.margin = '20px auto';
     puzzleContainer.style.position = 'relative';
     puzzleContainer.style.display = 'block';
+    puzzleContainer.style.overflow = 'visible';
 
-    // Define correct positions for 3x3 grid (where pieces should end up)
+    // Define correct positions for 3x3 grid with NEW DIMENSIONS
     var correctPositions = {
-        1: { x: 0, y: 0 },         // Top-left
-        2: { x: 200, y: 0 },       // Top-center  
-        3: { x: 400, y: 0 },       // Top-right
-        4: { x: 0, y: 133 },       // Middle-left
-        5: { x: 200, y: 133 },     // Middle-center
-        6: { x: 400, y: 133 },     // Middle-right
-        7: { x: 0, y: 266 },       // Bottom-left
-        8: { x: 200, y: 266 },     // Bottom-center
-        9: { x: 400, y: 266 }      // Bottom-right
+        1: { x: 0, y: 0 },           // Top-left
+        2: { x: 200, y: 0 },         // Top-center  
+        3: { x: 400, y: 0 },         // Top-right
+        4: { x: 0, y: 113.33 },      // Middle-left (updated Y)
+        5: { x: 200, y: 113.33 },    // Middle-center (updated Y)
+        6: { x: 400, y: 113.33 },    // Middle-right (updated Y)
+        7: { x: 0, y: 226.66 },      // Bottom-left (updated Y)
+        8: { x: 200, y: 226.66 },    // Bottom-center (updated Y)
+        9: { x: 400, y: 226.66 }     // Bottom-right (updated Y)
     };
 
-    var pieceWidth = 200;
-    var pieceHeight = 134;
-    var snapDistance = 40; // How close to snap
+    var pieceWidth = 200;        // 200px width
+    var pieceHeight = 113.33;    // 113.33px height (updated)
+    var snapDistance = 50;       // Snap distance
 
     // Create 9 pieces
     var pieces = [];
     var placedPieces = {};
+    var isDragging = false;
 
     for (var i = 1; i <= 9; i++) {
         var piece = document.createElement('img');
@@ -45,30 +47,33 @@ function initializePuzzle() {
         piece.dataset.pieceNumber = i;
         piece.dataset.isPlaced = 'false';
         
+        // UPDATED SIZING
         piece.style.width = pieceWidth + 'px';
         piece.style.height = pieceHeight + 'px';
         piece.style.position = 'absolute';
-        piece.style.border = '2px solid #FFD700';
-        piece.style.cursor = 'move';
+        piece.style.border = '3px solid #FFD700';
+        piece.style.cursor = 'grab';
         piece.style.zIndex = '10';
-        piece.style.boxSizing = 'content-box'; // Ensure borders don't affect size
-        piece.style.margin = '0'; // Remove any margins
-        piece.style.padding = '0'; // Remove any padding
+        piece.style.boxSizing = 'border-box';
+        piece.style.margin = '0';
+        piece.style.padding = '0';
+        piece.style.userSelect = 'none';
+        piece.style.pointerEvents = 'auto';
         
-        // Scatter pieces randomly outside the center area
+        // Scatter pieces around the NEW container size
         var startX, startY;
         if (i <= 3) {
             // Top pieces - scatter above
-            startX = Math.random() * 400 + 50;
-            startY = Math.random() * 50 - 150;
+            startX = (i - 1) * 150 + 50;
+            startY = -180; // Adjusted for new height
         } else if (i <= 6) {
             // Middle pieces - scatter to sides
-            startX = Math.random() > 0.5 ? Math.random() * 100 - 200 : Math.random() * 100 + 650;
-            startY = Math.random() * 200 + 50;
+            startX = (i <= 4) ? -250 : 750;
+            startY = ((i - 4) % 3) * 80 + 50; // Adjusted spacing
         } else {
             // Bottom pieces - scatter below
-            startX = Math.random() * 400 + 50;
-            startY = Math.random() * 50 + 450;
+            startX = (i - 7) * 150 + 50;
+            startY = 420; // Adjusted for new height (340 + 80)
         }
         
         piece.style.left = startX + 'px';
@@ -77,49 +82,92 @@ function initializePuzzle() {
         pieces.push(piece);
         puzzleContainer.appendChild(piece);
         
-        console.log("Created piece " + i + " at position " + startX + ", " + startY);
+        console.log("Created piece " + i + " (200x113.33) at position " + startX + ", " + startY);
     }
 
-    // Drag functionality with snapping
+    // Improved drag functionality
     var draggedPiece = null;
     var mouseOffset = { x: 0, y: 0 };
-    var originalPosition = { x: 0, y: 0 };
+    var lastMousePos = { x: 0, y: 0 };
 
     pieces.forEach(function(piece) {
+        // Mouse down - start drag
         piece.addEventListener('mousedown', function(e) {
-            if (piece.dataset.isPlaced === 'true') return; // Don't move placed pieces
+            e.preventDefault();
+            e.stopPropagation();
             
+            if (piece.dataset.isPlaced === 'true') return;
+            
+            isDragging = true;
             draggedPiece = piece;
+            
             var rect = piece.getBoundingClientRect();
             var containerRect = puzzleContainer.getBoundingClientRect();
             
             mouseOffset.x = e.clientX - rect.left;
             mouseOffset.y = e.clientY - rect.top;
             
-            // Store original position in case we need to return it
-            originalPosition.x = parseInt(piece.style.left);
-            originalPosition.y = parseInt(piece.style.top);
+            // Visual feedback
+            piece.style.zIndex = '1000';
+            piece.style.cursor = 'grabbing';
+            piece.style.transform = 'scale(1.05) rotate(2deg)';
+            piece.style.border = '3px solid #FFF700';
+            piece.style.boxShadow = '0 8px 16px rgba(0,0,0,0.3)';
             
-            piece.style.zIndex = '100';
-            piece.style.transform = 'scale(1.05)';
-            piece.style.border = '2px solid #FFF700';
+            document.body.style.userSelect = 'none';
             
             console.log("Started dragging piece " + piece.dataset.pieceNumber);
         });
+
+        // Touch support for mobile
+        piece.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            var touch = e.touches[0];
+            var mouseEvent = new MouseEvent('mousedown', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            piece.dispatchEvent(mouseEvent);
+        });
     });
 
+    // Global mouse move - smooth dragging
     document.addEventListener('mousemove', function(e) {
-        if (draggedPiece) {
+        if (draggedPiece && isDragging) {
+            e.preventDefault();
+            
             var containerRect = puzzleContainer.getBoundingClientRect();
             var newX = e.clientX - containerRect.left - mouseOffset.x;
             var newY = e.clientY - containerRect.top - mouseOffset.y;
             
-            draggedPiece.style.left = newX + 'px';
-            draggedPiece.style.top = newY + 'px';
+            // Smooth movement with requestAnimationFrame
+            requestAnimationFrame(function() {
+                if (draggedPiece) {
+                    draggedPiece.style.left = newX + 'px';
+                    draggedPiece.style.top = newY + 'px';
+                }
+            });
+            
+            lastMousePos.x = e.clientX;
+            lastMousePos.y = e.clientY;
         }
     });
 
-    document.addEventListener('mouseup', function() {
+    // Touch move support
+    document.addEventListener('touchmove', function(e) {
+        if (draggedPiece) {
+            e.preventDefault();
+            var touch = e.touches[0];
+            var mouseEvent = new MouseEvent('mousemove', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            document.dispatchEvent(mouseEvent);
+        }
+    });
+
+    // Global mouse up - drop piece
+    document.addEventListener('mouseup', function(e) {
         if (draggedPiece) {
             var piece = draggedPiece;
             var pieceNumber = parseInt(piece.dataset.pieceNumber);
@@ -132,40 +180,65 @@ function initializePuzzle() {
             var distanceY = Math.abs(currentY - correctPos.y);
             var distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
             
-            console.log("Piece " + pieceNumber + " dropped. Distance to target: " + distance);
+            console.log("Piece " + pieceNumber + " dropped. Distance to target: " + Math.round(distance));
             
             if (distance < snapDistance) {
-                // SNAP INTO PLACE!
+                // SNAP INTO PLACE with animation!
+                piece.style.transition = 'all 0.3s ease-out';
                 piece.style.left = correctPos.x + 'px';
                 piece.style.top = correctPos.y + 'px';
-                piece.style.border = 'none'; // Remove border immediately for seamless look
-                piece.style.borderRadius = '0'; // Remove rounded corners
-                piece.style.zIndex = '50';
-                piece.style.transform = 'scale(1)';
+                piece.style.border = 'none';
+                piece.style.borderRadius = '0';
+                piece.style.transform = 'scale(1) rotate(0deg)';
                 piece.style.cursor = 'default';
-                piece.style.margin = '0';
-                piece.style.padding = '0';
+                piece.style.zIndex = '50';
+                piece.style.boxShadow = 'none';
                 piece.dataset.isPlaced = 'true';
-                piece.classList.add('placed'); // Add CSS class for placed pieces
+                piece.classList.add('placed');
                 
                 placedPieces[pieceNumber] = true;
                 
+                // Remove transition after animation
+                setTimeout(function() {
+                    piece.style.transition = 'none';
+                }, 300);
+                
                 console.log("✅ Piece " + pieceNumber + " SNAPPED into place!");
                 
-                // Check if puzzle is complete
                 checkCompletion();
                 
             } else {
-                // Return to normal draggable state
+                // Return to normal state with animation
+                piece.style.transition = 'all 0.2s ease-out';
+                piece.style.transform = 'scale(1) rotate(0deg)';
+                piece.style.border = '3px solid #FFD700';
+                piece.style.cursor = 'grab';
                 piece.style.zIndex = '10';
-                piece.style.transform = 'scale(1)';
-                piece.style.border = '2px solid #FFD700';
-                piece.style.cursor = 'move';
+                piece.style.boxShadow = 'none';
                 
-                console.log("❌ Piece " + pieceNumber + " not close enough to target");
+                setTimeout(function() {
+                    piece.style.transition = 'none';
+                }, 200);
+                
+                console.log("❌ Piece " + pieceNumber + " not close enough (distance: " + Math.round(distance) + ")");
             }
             
+            // Reset drag state
+            isDragging = false;
             draggedPiece = null;
+            document.body.style.userSelect = '';
+        }
+    });
+
+    // Touch end support
+    document.addEventListener('touchend', function(e) {
+        if (draggedPiece) {
+            e.preventDefault();
+            var mouseEvent = new MouseEvent('mouseup', {
+                clientX: lastMousePos.x,
+                clientY: lastMousePos.y
+            });
+            document.dispatchEvent(mouseEvent);
         }
     });
 
@@ -176,52 +249,62 @@ function initializePuzzle() {
         if (placedCount === 9) {
             console.log("🎉 PUZZLE COMPLETED!");
             
-            // Ensure all pieces are seamless (no borders, perfect positioning)
-            pieces.forEach(function(piece) {
+            // Final seamless positioning with EXACT coordinates
+            pieces.forEach(function(piece, index) {
+                var pieceNumber = parseInt(piece.dataset.pieceNumber);
+                var correctPos = correctPositions[pieceNumber];
+                
+                piece.style.transition = 'all 0.5s ease-out';
+                piece.style.left = correctPos.x + 'px';
+                piece.style.top = correctPos.y + 'px';
                 piece.style.border = 'none';
+                piece.style.borderRadius = '0';
                 piece.style.margin = '0';
                 piece.style.padding = '0';
-                piece.style.boxShadow = 'none'; // Remove any shadows that might create gaps
+                piece.style.transform = 'scale(1)';
+                piece.style.boxShadow = 'none';
             });
             
-            // Add subtle completion glow effect to the entire puzzle
-            puzzleContainer.style.boxShadow = '0 0 30px rgba(255, 215, 0, 0.6)';
-            
-            // Show completion message after a brief delay
+            // Add completion glow to entire puzzle
             setTimeout(function() {
-                alert("🎉 Puzzle Complete! The kitchen scene is restored. Now find the GEMBA clues in the image!");
-            }, 500);
+                puzzleContainer.style.transition = 'all 0.5s ease-out';
+                puzzleContainer.style.boxShadow = '0 0 40px rgba(255, 215, 0, 0.8)';
+                
+                alert("🎉 Puzzle Complete! The kitchen scene is restored. Now find the GEMBA clues in the completed image!");
+            }, 600);
         }
     }
 
-    // Double-click to return piece to original scattered position
+    // Double-click to return pieces
     pieces.forEach(function(piece) {
         piece.addEventListener('dblclick', function() {
             if (piece.dataset.isPlaced === 'true') {
-                // Remove from placed pieces
                 var pieceNumber = parseInt(piece.dataset.pieceNumber);
                 delete placedPieces[pieceNumber];
                 piece.dataset.isPlaced = 'false';
                 
-                // Return to original scattered position
-                piece.style.border = '2px solid #FFD700';
+                piece.style.transition = 'all 0.3s ease-out';
+                piece.style.border = '3px solid #FFD700';
                 piece.style.borderRadius = '4px';
-                piece.style.cursor = 'move';
+                piece.style.cursor = 'grab';
                 piece.style.zIndex = '10';
-                piece.style.boxShadow = 'none';
-                piece.style.margin = '0';
-                piece.style.padding = '0';
-                piece.classList.remove('placed'); // Remove placed class
+                piece.style.transform = 'scale(1.1)';
+                piece.classList.remove('placed');
                 
-                console.log("Piece " + pieceNumber + " returned to scattered position");
+                setTimeout(function() {
+                    piece.style.transform = 'scale(1)';
+                    piece.style.transition = 'none';
+                }, 300);
+                
+                console.log("Piece " + pieceNumber + " returned to moveable state");
             }
         });
     });
 
-    console.log("Snapping jigsaw puzzle initialized! Drag pieces near their correct positions to snap them into place.");
+    console.log("Jigsaw puzzle initialized! Container: 600x340px, Pieces: 200x113.33px");
 }
 
 // Make function available globally
 window.initializePuzzle = initializePuzzle;
 
-console.log("Snapping jigsaw script loaded!");
+console.log("Updated dimension jigsaw script loaded!");
