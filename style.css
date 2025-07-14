@@ -263,7 +263,7 @@ h2 {
     margin: 20px auto;
     position: relative;
     overflow: visible;
-    display: block; /* Changed from flex to allow absolute positioning of slots */
+    display: block;
 }
 
 /* UPDATED: Puzzle slot styling with absolute positioning and dynamic dimensions */
@@ -271,7 +271,7 @@ h2 {
     border: 2px dashed rgba(255,255,255,0.5);
     box-sizing: border-box;
     background-color: rgba(255,255,255,0.1);
-    position: absolute; /* Changed to absolute for precise positioning */
+    position: absolute;
 }
 
 /* UPDATED: Puzzle piece styling with proportional dimensions and visual feedback */
@@ -279,7 +279,7 @@ h2 {
     border: 2px solid yellow;
     box-sizing: border-box;
     cursor: grab;
-    transition: border-color 0.3s ease; /* Smooth color transitions for feedback */
+    transition: border-color 0.3s ease;
 }
 
 .puzzle-piece:active {
@@ -288,27 +288,26 @@ h2 {
 }
 
 .puzzle-piece:hover {
-    border-color: #FFD700; /* Gold color on hover */
+    border-color: #FFD700;
 }
 
-/* Visual feedback states for puzzle pieces */
 .puzzle-piece.correct {
-    border-color: #00FF00 !important; /* Green for correct placement */
+    border-color: #00FF00 !important;
 }
 
 .puzzle-piece.incorrect {
-    border-color: #FF0000 !important; /* Red for incorrect placement */
+    border-color: #FF0000 !important;
 }
 
 .puzzle-piece.completed {
-    border-color: #FFD700 !important; /* Gold for completed puzzle */
+    border-color: #FFD700 !important;
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
-/* UPDATED: Hint container styling */
+/* CHANGED: Hint container now always visible */
 #hint-container {
     margin: 20px 0;
-    display: none;
+    display: block;
     max-width: 600px;
 }
 
@@ -331,9 +330,9 @@ h2 {
     background-color: white;
 }
 
-/* UPDATED: Answer container styling */
+/* CHANGED: Answer container now always visible */
 #ingredient-answer-container {
-    display: none;
+    display: block;
     margin: 20px 0;
 }
 
@@ -394,22 +393,18 @@ h2 {
         margin: 0 auto 20px;
     }
     
-    /* UPDATED: Mobile puzzle adjustments - proportional scaling */
+    /* Mobile puzzle adjustments */
     #puzzle-container {
-        /* Size will be automatically adjusted by JavaScript for mobile */
         max-width: 90vw;
         max-height: 70vh;
     }
     
-    /* Mobile pieces and slots will be scaled proportionally by JavaScript */
     .puzzle-piece {
-        /* Dimensions handled by JavaScript but ensure minimum touch target */
         min-width: 40px;
         min-height: 40px;
     }
     
     .puzzle-slot {
-        /* Dimensions handled by JavaScript */
         min-width: 40px;
         min-height: 40px;
     }
