@@ -133,9 +133,12 @@ function initializePuzzle() {
                     checkCompletion();
                 } else {
                     // Wrong piece - visual feedback
-                    draggedPiece.style.border = '2px solid red';
+                    const wrongPiece = draggedPiece; // Capture reference before it becomes null
+                    wrongPiece.style.border = '2px solid red';
                     setTimeout(() => {
-                        draggedPiece.style.border = '2px solid yellow';
+                        if (wrongPiece) {
+                            wrongPiece.style.border = '2px solid yellow';
+                        }
                     }, 1000);
                 }
             }
