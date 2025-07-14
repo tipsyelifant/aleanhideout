@@ -355,4 +355,34 @@ h2 {
         display: block;
         margin: 0 auto 20px;
     }
+    
+    #puzzle-container {
+    width: 600px;
+    height: 600px;
+    background-color: #333; /* Add a gray background to see the container */
+    border: 2px solid white; /* Add a border to see the container boundaries */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap; /* Ensure pieces wrap properly */
+    }
+
+    .puzzle-slot {
+    width: 200px;
+    height: 200px;
+    border: 2px solid yellow; /* Make borders more visible */
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,0.1); /* Light background to see slots */
+    }
+
+    .puzzle-piece {
+    width: 200px;
+    height: 200px;
+    border: 2px solid red; /* Add red border to see pieces */
+    box-sizing: border-box;
+    background-color: blue; /* Temporary blue background if images don't load */
+    }
 }
