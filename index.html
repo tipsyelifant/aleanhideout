@@ -103,8 +103,8 @@
         </div>
 
         <div id="ingredient-puzzle-screen" style="display: none;">
-            <h2>What is the 5-letter word?</h2>
             <div id="puzzle-container" style="background-image: url('images/jigsaw-3.svg');"></div>
+            <h2>What is the 5-letter word?</h2>
             <div id="hint-container">
                 <div class="hint-box">
                     <div class="hint-title">▸ Clue 1</div>
@@ -135,20 +135,21 @@
             </div>
         </div>
 
-        <div id="answer-reveal-screen" style="display: none;">
-            <h2>Congratulations! The answer is GEMBA.</h2>
-            <p>GEMBA is a Japanese term that means "the real place." In Lean, it refers to the practice of going to the actual place where work is done to see the process, understand the work, and identify opportunities for improvement.</p>
-            <button id="reflection-btn">Continue</button>
-        </div>
-
-        <div id="reflection-screen" style="display: none;">
-            <h2>How can you apply GEMBA in your work?</h2>
+        <div id="did-you-know-screen" style="display: none;">
+            <h2>Did you know?</h2>
+            <p><strong>Gemba</strong> means 'the real place' — where the work actually happens.</p>
+            <p>A <strong>Gemba Walk</strong> is when you go to observe the real process with your own eyes, not rely on reports or guesses.</p>
+            <h3>Try this in your own work!</h3>
             <ul>
-                <li>Visit the frontlines to understand the challenges your colleagues face.</li>
-                <li>Shadow a colleague for a day to see their work from their perspective.</li>
-                <li>Talk to customers to get their feedback on your services.</li>
+                <li>🗓 Plan regular “ground visits”</li>
+                <li>👥 Shadow frontline staff</li>
+                <li>📸 Capture photos/videos (if appropriate)</li>
+                <li>❓ Ask: “What’s actually happening here?” — not “What should be happening?”</li>
             </ul>
-            <button id="finish-btn">Finish</button>
+            <div class="button-group">
+                <button id="did-you-know-back-btn" class="btn btn-gray">Back</button>
+                <button id="did-you-know-next-btn" class="btn">Next Puzzle</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
