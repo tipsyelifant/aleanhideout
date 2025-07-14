@@ -89,8 +89,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('did-you-know-next-btn').addEventListener('click', () => {
-        // For now, just go back to the start screen.
         document.getElementById('did-you-know-screen').style.display = 'none';
+        document.getElementById('puzzle-2-intro-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-2-intro-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-2-intro-screen').style.display = 'none';
+        document.getElementById('did-you-know-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-2-intro-next-btn').addEventListener('click', () => {
+        // For now, just go back to the start screen.
+        document.getElementById('puzzle-2-intro-screen').style.display = 'none';
         document.getElementById('start-screen').style.display = 'block';
     });
 
