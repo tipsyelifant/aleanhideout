@@ -51,6 +51,9 @@ function initializePuzzle() {
         piece.style.border = '2px solid #FFD700';
         piece.style.cursor = 'move';
         piece.style.zIndex = '10';
+        piece.style.boxSizing = 'content-box'; // Ensure borders don't affect size
+        piece.style.margin = '0'; // Remove any margins
+        piece.style.padding = '0'; // Remove any padding
         
         // Scatter pieces randomly outside the center area
         var startX, startY;
@@ -135,11 +138,15 @@ function initializePuzzle() {
                 // SNAP INTO PLACE!
                 piece.style.left = correctPos.x + 'px';
                 piece.style.top = correctPos.y + 'px';
-                piece.style.border = '1px solid #00FF00';
+                piece.style.border = 'none'; // Remove border immediately for seamless look
+                piece.style.borderRadius = '0'; // Remove rounded corners
                 piece.style.zIndex = '50';
                 piece.style.transform = 'scale(1)';
                 piece.style.cursor = 'default';
+                piece.style.margin = '0';
+                piece.style.padding = '0';
                 piece.dataset.isPlaced = 'true';
+                piece.classList.add('placed'); // Add CSS class for placed pieces
                 
                 placedPieces[pieceNumber] = true;
                 
@@ -169,11 +176,16 @@ function initializePuzzle() {
         if (placedCount === 9) {
             console.log("🎉 PUZZLE COMPLETED!");
             
-            // Remove all borders to create seamless image
+            // Ensure all pieces are seamless (no borders, perfect positioning)
             pieces.forEach(function(piece) {
                 piece.style.border = 'none';
-                piece.style.boxShadow = '0 0 20px rgba(255, 215, 0, 0.8)';
+                piece.style.margin = '0';
+                piece.style.padding = '0';
+                piece.style.boxShadow = 'none'; // Remove any shadows that might create gaps
             });
+            
+            // Add subtle completion glow effect to the entire puzzle
+            puzzleContainer.style.boxShadow = '0 0 30px rgba(255, 215, 0, 0.6)';
             
             // Show completion message after a brief delay
             setTimeout(function() {
@@ -193,9 +205,13 @@ function initializePuzzle() {
                 
                 // Return to original scattered position
                 piece.style.border = '2px solid #FFD700';
+                piece.style.borderRadius = '4px';
                 piece.style.cursor = 'move';
                 piece.style.zIndex = '10';
                 piece.style.boxShadow = 'none';
+                piece.style.margin = '0';
+                piece.style.padding = '0';
+                piece.classList.remove('placed'); // Remove placed class
                 
                 console.log("Piece " + pieceNumber + " returned to scattered position");
             }
