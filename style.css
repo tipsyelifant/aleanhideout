@@ -524,6 +524,36 @@ h2 {
     margin-top: 20px;
 }
 
+#puzzle-2-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#puzzle-2-video {
+    margin-bottom: 20px;
+    border: 3px solid white;
+    border-radius: 10px;
+}
+
+#puzzle-2-answer-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#puzzle-2-answer {
+    padding: 10px;
+    font-size: 16px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 1200px) {
     .info-box-container {
