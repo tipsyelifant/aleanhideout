@@ -254,10 +254,10 @@ h2 {
     overflow: visible;
 }
 
-/* PUZZLE CONTAINER - Main puzzle board */
+/* PUZZLE CONTAINER - Updated dimensions 600x340 */
 #puzzle-container {
     width: 600px;
-    height: 400px;
+    height: 340px; /* Updated from 400px to 340px */
     background-color: #333;
     border: 3px solid white;
     margin: 20px auto;
@@ -270,19 +270,25 @@ h2 {
     background-position: center;
 }
 
-/* PUZZLE PIECES - Seamless when placed */
+/* PUZZLE PIECES - Updated dimensions 200x113.33 */
 .puzzle-piece {
     position: absolute;
-    border: 2px solid #FFD700;
-    cursor: move;
+    border: 3px solid #FFD700;
+    cursor: grab;
     user-select: none;
-    transition: box-shadow 0.2s ease, transform 0.1s ease;
+    transition: none; /* Controlled by JavaScript for smooth performance */
     border-radius: 4px;
     z-index: 10;
-    box-sizing: content-box;
-    margin: 0;
-    padding: 0;
+    box-sizing: border-box; /* Include border in size calculations */
+    margin: 0 !important;
+    padding: 0 !important;
     display: block;
+    image-rendering: -webkit-optimize-contrast; /* Crisp image rendering */
+    image-rendering: crisp-edges;
+    backface-visibility: hidden; /* Improve performance */
+    transform-style: preserve-3d;
+    width: 200px; /* Fixed width */
+    height: 113.33px; /* Updated height from 133px to 113.33px */
 }
 
 .puzzle-piece:hover {
@@ -419,7 +425,7 @@ h2 {
     margin: 20px auto;
 }
 
-/* MOBILE RESPONSIVENESS */
+/* MOBILE RESPONSIVENESS - Updated for new dimensions */
 @media (max-width: 600px) {
     #character-lineup {
         flex-wrap: wrap;
@@ -448,17 +454,18 @@ h2 {
         margin: 0 auto 20px;
     }
     
-    /* Mobile puzzle adjustments */
+    /* Mobile puzzle adjustments - maintaining aspect ratio */
     #puzzle-container {
         width: 90vw;
-        height: 60vh;
+        height: 51vw; /* Maintains 600:340 ratio (340/600 = 0.567) */
         max-width: 500px;
-        max-height: 300px;
+        max-height: 283px; /* 500 * 0.567 = 283 */
     }
     
     .puzzle-piece {
+        /* Pieces will be scaled proportionally by JavaScript on mobile */
         min-width: 50px;
-        min-height: 40px;
+        min-height: 28px; /* Maintains aspect ratio */
     }
 
     #ingredient-answer {
