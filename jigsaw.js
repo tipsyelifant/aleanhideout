@@ -1,7 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Function to initialize the puzzle
+function initializePuzzle() {
     const puzzleContainer = document.getElementById('puzzle-container');
     const hintContainer = document.getElementById('hint-container');
     const answerContainer = document.getElementById('ingredient-answer-container');
+
+    // Clear any existing content
+    puzzleContainer.innerHTML = '';
 
     const pieces = [];
     for (let i = 1; i <= 9; i++) {
@@ -74,4 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
             answerContainer.style.display = 'block';
         }
     }
-});
+}
+
+// Run when DOM is ready OR when called manually
+document.addEventListener('DOMContentLoaded', initializePuzzle);
+
+// Also make it available globally so we can call it manually
+window.initializePuzzle = initializePuzzle;
