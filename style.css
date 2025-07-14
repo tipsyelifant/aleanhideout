@@ -93,10 +93,6 @@ h2 {
     margin-bottom: 20px;
 }
 
-#instructions {
-    margin-bottom: 20px;
-}
-
 #instructions p {
     margin-bottom: 1em;
 }
@@ -114,7 +110,6 @@ h2 {
 #instructions a {
     color: #add8e6;
 }
-
 
 #story-screen {
     display: flex;
@@ -152,10 +147,6 @@ h2 {
     background-color: #45a049;
 }
 
-#puzzle-container {
-    margin: 20px 0;
-}
-
 #next-puzzle-btn {
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -178,7 +169,7 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     min-height: 100vh;
     padding: 20px;
 }
@@ -204,10 +195,6 @@ h2 {
     color: white;
     padding: 15px;
     max-width: 300px;
-}
-
-#angry-customer-screen {
-    justify-content: center;
 }
 
 .button-group {
@@ -266,30 +253,52 @@ h2 {
     padding: 20px;
 }
 
+/* FIXED: Main puzzle container styling - applies to all screen sizes */
 #puzzle-container {
     width: 600px;
     height: 600px;
+    background-color: #333;
+    border: 2px solid white;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     margin-bottom: 20px;
     position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    overflow: visible;
 }
 
+/* FIXED: Puzzle slot styling - removed float, added proper layout */
 .puzzle-slot {
     width: 200px;
     height: 200px;
-    border: 1px dashed white;
-    float: left;
+    border: 2px dashed white;
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,0.1);
+    display: inline-block;
+    margin: 0;
 }
 
+/* FIXED: Puzzle piece styling - proper visibility and interaction */
 .puzzle-piece {
     width: 200px;
     height: 200px;
+    border: 2px solid yellow;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 2px;
+    cursor: grab;
+}
+
+.puzzle-piece:active {
+    cursor: grabbing;
 }
 
 #hint-container {
     margin: 20px 0;
+    display: none;
 }
 
 .hint-box {
@@ -299,6 +308,7 @@ h2 {
 
 .hint-title {
     background-color: #f0f0f0;
+    color: #333;
     padding: 10px;
     cursor: pointer;
 }
@@ -306,6 +316,20 @@ h2 {
 .hint-content {
     padding: 10px;
     display: none;
+    color: #333;
+    background-color: white;
+}
+
+#ingredient-answer-container {
+    display: none;
+}
+
+#ingredient-answer {
+    padding: 10px;
+    margin: 10px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 #answer-reveal-screen button, #reflection-screen button {
@@ -356,43 +380,19 @@ h2 {
         margin: 0 auto 20px;
     }
     
+    /* Mobile puzzle adjustments */
     #puzzle-container {
-    width: 600px;
-    height: 600px;
-    background-color: #333;
-    border: 2px solid white;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-bottom: 20px;
-    position: relative;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: flex-start;
-    }
-
-    .puzzle-slot {
-    width: 200px;
-    height: 200px;
-    border: 2px dashed white;
-    box-sizing: border-box;
-    background-color: rgba(255,255,255,0.1);
-    display: inline-block;
-    margin: 0;
-    }
-
-    .puzzle-piece {
-    width: 200px;
-    height: 200px;
-    border: 2px solid yellow;
-    box-sizing: border-box;
-    display: inline-block;
-    margin: 2px;
-    cursor: grab;
-    }
-
-    .puzzle-piece:active {
-    cursor: grabbing;
+        width: 300px;
+        height: 300px;
     }
     
+    .puzzle-slot {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .puzzle-piece {
+        width: 100px;
+        height: 100px;
+    }
 }
