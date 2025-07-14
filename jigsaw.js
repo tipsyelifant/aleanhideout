@@ -26,6 +26,10 @@ function initializePuzzle() {
     // Clear any existing content
     puzzleContainer.innerHTML = '';
     
+    // Ensure hint and answer containers are visible from start
+    if (hintContainer) hintContainer.style.display = 'block';
+    if (answerContainer) answerContainer.style.display = 'block';
+    
     // Set container to proper proportional size
     puzzleContainer.style.width = CONTAINER_WIDTH + 'px';
     puzzleContainer.style.height = CONTAINER_HEIGHT + 'px';
@@ -182,12 +186,11 @@ function initializePuzzle() {
 
         if (correctPieces === 9) {
             console.log("Puzzle completed!");
-            hintContainer.style.display = 'block';
-            answerContainer.style.display = 'block';
             
-            // Add completion effect
+            // Add completion effect - turn all pieces gold
             pieces.forEach(piece => {
                 piece.style.border = '3px solid gold';
+                piece.style.boxShadow = '0 0 10px rgba(255, 215, 0, 0.5)';
             });
         }
     }
