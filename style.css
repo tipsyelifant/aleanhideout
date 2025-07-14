@@ -251,69 +251,78 @@ h2 {
     justify-content: center;
     min-height: 100vh;
     padding: 20px;
+    overflow: visible;
 }
 
-/* UPDATED: Proportional puzzle container - size set by JavaScript */
+/* UPDATED: Simple jigsaw puzzle container */
 #puzzle-container {
+    width: 600px;
+    height: 400px;
     background-color: #333;
-    border: 2px solid white;
+    border: 3px solid white;
+    margin: 20px auto;
+    position: relative;
+    display: block;
+    overflow: visible;
+    background-image: url('images/jigsaw-3.svg');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    margin: 20px auto;
-    position: relative;
-    overflow: visible;
-    display: block;
 }
 
-/* UPDATED: Puzzle slot styling with absolute positioning and dynamic dimensions */
-.puzzle-slot {
-    border: 2px dashed rgba(255,255,255,0.5);
-    box-sizing: border-box;
-    background-color: rgba(255,255,255,0.1);
-    position: absolute;
-}
-
-/* UPDATED: Puzzle piece styling with proportional dimensions and visual feedback */
+/* UPDATED: Simple puzzle pieces for dragging */
 .puzzle-piece {
-    border: 2px solid yellow;
-    box-sizing: border-box;
-    cursor: grab;
-    transition: border-color 0.3s ease;
+    position: absolute;
+    border: 2px solid #FFD700;
+    cursor: move;
+    user-select: none;
+    transition: box-shadow 0.2s ease, transform 0.1s ease;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+.puzzle-piece:hover {
+    border-color: #FFF700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
 }
 
 .puzzle-piece:active {
     cursor: grabbing;
-    opacity: 0.8;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    z-index: 100;
 }
 
-.puzzle-piece:hover {
-    border-color: #FFD700;
+/* UPDATED: Placed pieces get green border */
+.puzzle-piece.placed {
+    border-color: #00FF00;
+    cursor: default;
 }
 
-.puzzle-piece.correct {
-    border-color: #00FF00 !important;
-}
-
-.puzzle-piece.incorrect {
-    border-color: #FF0000 !important;
-}
-
+/* UPDATED: Completed puzzle state */
 .puzzle-piece.completed {
-    border-color: #FFD700 !important;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    border: none;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
 }
 
-/* CHANGED: Hint container now always visible */
+/* Hide puzzle slots since we're not using them for traditional jigsaw */
+.puzzle-slot {
+    display: none;
+}
+
+/* UPDATED: Always visible hint container */
 #hint-container {
     margin: 20px 0;
     display: block;
     max-width: 600px;
+    z-index: 1;
 }
 
 .hint-box {
     border: 1px solid #ccc;
     margin-bottom: 10px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .hint-title {
@@ -321,28 +330,66 @@ h2 {
     color: #333;
     padding: 10px;
     cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+}
+
+.hint-title:hover {
+    background-color: #e0e0e0;
 }
 
 .hint-content {
-    padding: 10px;
+    padding: 15px;
     display: none;
     color: #333;
     background-color: white;
+    line-height: 1.5;
 }
 
-/* CHANGED: Answer container now always visible */
+/* UPDATED: Always visible answer container */
 #ingredient-answer-container {
     display: block;
     margin: 20px 0;
+    z-index: 1;
 }
 
 #ingredient-answer {
-    padding: 10px;
+    padding: 12px;
     margin: 10px;
     width: 250px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     font-size: 16px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#ingredient-answer:focus {
+    border-color: #4CAF50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+#submit-ingredient-answer-btn {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    transition: background-color 0.2s ease;
+}
+
+#submit-ingredient-answer-btn:hover {
+    background-color: #45a049;
+}
+
+#ingredient-error-message {
+    color: #ff4444;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
 #answer-reveal-screen button, #reflection-screen button {
@@ -395,17 +442,23 @@ h2 {
     
     /* Mobile puzzle adjustments */
     #puzzle-container {
-        max-width: 90vw;
-        max-height: 70vh;
+        width: 90vw;
+        height: 60vh;
+        max-width: 500px;
+        max-height: 300px;
     }
     
     .puzzle-piece {
-        min-width: 40px;
+        /* Pieces will be scaled down by JavaScript on mobile */
+        min-width: 50px;
         min-height: 40px;
     }
+
+    #ingredient-answer {
+        width: 200px;
+    }
     
-    .puzzle-slot {
-        min-width: 40px;
-        min-height: 40px;
+    .hint-box {
+        margin: 10px;
     }
 }
