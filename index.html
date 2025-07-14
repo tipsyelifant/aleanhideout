@@ -103,8 +103,8 @@
         </div>
 
         <div id="ingredient-puzzle-screen" style="display: none;">
-            <div id="puzzle-container" style="background-image: url('images/jigsaw-3.svg');"></div>
             <h2>What is the 5-letter word?</h2>
+            <div id="puzzle-container" style="background-image: url('images/jigsaw-3.svg');"></div>
             <div id="hint-container">
                 <div class="hint-box">
                     <div class="hint-title">▸ Clue 1</div>
@@ -136,19 +136,26 @@
         </div>
 
         <div id="did-you-know-screen" style="display: none;">
-            <h2>Did you know?</h2>
-            <p><strong>Gemba</strong> means 'the real place' — where the work actually happens.</p>
-            <p>A <strong>Gemba Walk</strong> is when you go to observe the real process with your own eyes, not rely on reports or guesses.</p>
-            <h3>Try this in your own work!</h3>
-            <ul>
-                <li>🗓 Plan regular “ground visits”</li>
-                <li>👥 Shadow frontline staff</li>
-                <li>📸 Capture photos/videos (if appropriate)</li>
-                <li>❓ Ask: “What’s actually happening here?” — not “What should be happening?”</li>
-            </ul>
+            <h2 class="chalk-font">Did you know?</h2>
+            <div class="info-box-container">
+                <div class="info-box">
+                    <h3>🧠 What is Gemba?</h3>
+                    <p><strong>Gemba</strong> means “the real place” — where the work actually happens.</p>
+                    <p>A <strong>Gemba Walk</strong> is when you go to observe the real process with your own eyes, not rely on reports or guesses.</p>
+                </div>
+                <div class="info-box">
+                    <h3>🛠️ Try this in your own work!</h3>
+                    <ul>
+                        <li>🗓️ Plan regular “<strong>ground visits</strong>”</li>
+                        <li>👥 <strong>Shadow frontline staff</strong> to understand real challenges</li>
+                        <li>📸 Capture <strong>photos/videos</strong> (if appropriate)</li>
+                        <li>❓ Ask: “What’s <em>actually</em> happening here?” — not “What <em>should</em> be happening?”</li>
+                    </ul>
+                </div>
+            </div>
             <div class="button-group">
-                <button id="did-you-know-back-btn" class="btn btn-gray">Back</button>
-                <button id="did-you-know-next-btn" class="btn">Next Puzzle</button>
+                <button id="did-you-know-back-btn" class="btn btn-gray">⬅️ Back</button>
+                <button id="did-you-know-next-btn" class="btn">➡️ Next Puzzle</button>
             </div>
         </div>
     </div>
