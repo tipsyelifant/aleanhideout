@@ -99,15 +99,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('puzzle-2-intro-next-btn').addEventListener('click', () => {
-        // For now, just go back to the start screen.
         document.getElementById('puzzle-2-intro-screen').style.display = 'none';
+        document.getElementById('puzzle-2-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-2-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-2-screen').style.display = 'none';
+        document.getElementById('puzzle-2-intro-screen').style.display = 'flex';
+    });
+
+    document.getElementById('submit-puzzle-2-answer-btn').addEventListener('click', () => {
+        const answer = document.getElementById('puzzle-2-answer').value.toUpperCase();
+        if (answer === 'VALUEADD') {
+            document.getElementById('puzzle-2-error-message').style.display = 'none';
+            document.getElementById('puzzle-2-next-puzzle-btn').style.display = 'block';
+        } else {
+            document.getElementById('puzzle-2-error-message').style.display = 'block';
+        }
+    });
+
+    document.getElementById('puzzle-2-next-puzzle-btn').addEventListener('click', () => {
+        // For now, just go back to the start screen.
+        document.getElementById('puzzle-2-screen').style.display = 'none';
         document.getElementById('start-screen').style.display = 'block';
     });
 
     const hintTitles = document.querySelectorAll('.hint-title');
     hintTitles.forEach(title => {
         title.addEventListener('click', () => {
-            title.nextElementSibling.style.display = title.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+            const content = title.nextElementSibling;
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
         });
     });
 });
