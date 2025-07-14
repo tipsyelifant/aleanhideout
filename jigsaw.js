@@ -1,5 +1,5 @@
 function initializePuzzle() {
-    console.log("Starting final jigsaw puzzle with side pieces and clean overlay...");
+    console.log("Starting jigsaw puzzle with correct layout and 1.5x bigger size...");
     
     var puzzleContainer = document.querySelector('#ingredient-puzzle-screen #puzzle-container');
     if (!puzzleContainer) {
@@ -7,10 +7,10 @@ function initializePuzzle() {
         return;
     }
 
-    // Clear and setup container
+    // Clear and setup container - 1.5x bigger: 900x510
     puzzleContainer.innerHTML = '';
-    puzzleContainer.style.width = '600px';
-    puzzleContainer.style.height = '340px';
+    puzzleContainer.style.width = '900px';  // 600 × 1.5 = 900
+    puzzleContainer.style.height = '510px'; // 340 × 1.5 = 510
     puzzleContainer.style.backgroundColor = '#333';
     puzzleContainer.style.border = '3px solid white';
     puzzleContainer.style.margin = '20px auto';
@@ -23,11 +23,11 @@ function initializePuzzle() {
     leftPiecesArea.id = 'left-pieces-area';
     leftPiecesArea.style.cssText = `
         position: absolute;
-        left: -180px;
+        left: -220px;
         top: 0;
-        width: 160px;
-        height: 340px;
-        padding: 10px;
+        width: 200px;
+        height: 510px;
+        padding: 15px;
         border: 2px dashed #FFD700;
         border-radius: 8px;
         background-color: rgba(255, 215, 0, 0.1);
@@ -35,7 +35,7 @@ function initializePuzzle() {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         overflow: visible;
     `;
     
@@ -43,11 +43,11 @@ function initializePuzzle() {
     rightPiecesArea.id = 'right-pieces-area';
     rightPiecesArea.style.cssText = `
         position: absolute;
-        right: -180px;
+        right: -220px;
         top: 0;
-        width: 160px;
-        height: 340px;
-        padding: 10px;
+        width: 200px;
+        height: 510px;
+        padding: 15px;
         border: 2px dashed #FFD700;
         border-radius: 8px;
         background-color: rgba(255, 215, 0, 0.1);
@@ -55,7 +55,7 @@ function initializePuzzle() {
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
         overflow: visible;
     `;
     
@@ -63,22 +63,22 @@ function initializePuzzle() {
     puzzleContainer.appendChild(leftPiecesArea);
     puzzleContainer.appendChild(rightPiecesArea);
 
-    // Define correct positions for 3x3 grid
+    // Define correct positions for 3x3 grid - 1.5x bigger
     var correctPositions = {
         1: { x: 0, y: 0 },           // Top-left
-        2: { x: 200, y: 0 },         // Top-center  
-        3: { x: 400, y: 0 },         // Top-right
-        4: { x: 0, y: 113.33 },      // Middle-left
-        5: { x: 200, y: 113.33 },    // Middle-center
-        6: { x: 400, y: 113.33 },    // Middle-right
-        7: { x: 0, y: 226.66 },      // Bottom-left
-        8: { x: 200, y: 226.66 },    // Bottom-center
-        9: { x: 400, y: 226.66 }     // Bottom-right
+        2: { x: 300, y: 0 },         // Top-center (200 × 1.5 = 300)
+        3: { x: 600, y: 0 },         // Top-right (400 × 1.5 = 600)
+        4: { x: 0, y: 170 },         // Middle-left (113.33 × 1.5 = 170)
+        5: { x: 300, y: 170 },       // Middle-center
+        6: { x: 600, y: 170 },       // Middle-right
+        7: { x: 0, y: 340 },         // Bottom-left (226.66 × 1.5 = 340)
+        8: { x: 300, y: 340 },       // Bottom-center
+        9: { x: 600, y: 340 }        // Bottom-right
     };
 
-    var pieceWidth = 200;
-    var pieceHeight = 113.33;
-    var snapDistance = 50;
+    var pieceWidth = 300;        // 200 × 1.5 = 300
+    var pieceHeight = 170;       // 113.33 × 1.5 = 170
+    var snapDistance = 75;       // 50 × 1.5 = 75
 
     // Create 9 pieces
     var pieces = [];
@@ -91,11 +91,11 @@ function initializePuzzle() {
         piece.classList.add('puzzle-piece');
         piece.dataset.pieceNumber = i;
         piece.dataset.isPlaced = 'false';
-        piece.dataset.originalParent = i <= 5 ? 'left-pieces-area' : 'right-pieces-area'; // Track which side
+        piece.dataset.originalParent = i <= 5 ? 'left-pieces-area' : 'right-pieces-area';
         
-        // Piece styling - smaller for side areas
-        piece.style.width = '100px'; // Smaller for side areas
-        piece.style.height = '57px';  // Smaller for side areas (maintains ratio)
+        // Piece styling - smaller for side areas (1.5x bigger than before)
+        piece.style.width = '150px';  // 100 × 1.5 = 150
+        piece.style.height = '85px';  // 57 × 1.5 = 85
         piece.style.border = '2px solid #FFD700';
         piece.style.cursor = 'grab';
         piece.style.zIndex = '10';
@@ -107,7 +107,7 @@ function initializePuzzle() {
         
         pieces.push(piece);
         
-        console.log("Created piece " + i + " for pieces area");
+        console.log("Created piece " + i + " for side areas (1.5x bigger)");
     }
 
     // Shuffle pieces and distribute to left and right areas
@@ -223,8 +223,8 @@ function initializePuzzle() {
             console.log("Piece " + pieceNumber + " dropped. Distance to target: " + Math.round(distance));
             
             if (distance < snapDistance && 
-                relativeX >= -50 && relativeX <= 650 && 
-                relativeY >= -50 && relativeY <= 390) {
+                relativeX >= -75 && relativeX <= 975 && 
+                relativeY >= -75 && relativeY <= 585) {
                 
                 // SNAP INTO PLACE!
                 piece.style.position = 'absolute';
@@ -280,8 +280,8 @@ function initializePuzzle() {
 
     function returnToPiecesArea(piece) {
         piece.style.position = 'static';
-        piece.style.width = '100px';
-        piece.style.height = '57px';
+        piece.style.width = '150px';  // 1.5x bigger side piece size
+        piece.style.height = '85px';  // 1.5x bigger side piece size
         piece.style.border = '2px solid #FFD700';
         piece.style.cursor = 'grab';
         piece.style.zIndex = '10';
@@ -319,8 +319,8 @@ function initializePuzzle() {
                 position: absolute;
                 top: 0;
                 left: 0;
-                width: 600px;
-                height: 340px;
+                width: 900px;
+                height: 510px;
                 z-index: 100;
                 border: none;
                 border-radius: 0;
@@ -361,10 +361,10 @@ function initializePuzzle() {
         });
     });
 
-    console.log("Final jigsaw puzzle initialized! Layout: Container with side pieces → Question → Answer → Clues");
+    console.log("Jigsaw puzzle initialized! Container: 900x510px (1.5x bigger), Pieces: 300x170px");
 }
 
 // Make function available globally
 window.initializePuzzle = initializePuzzle;
 
-console.log("Final jigsaw script with side pieces and clean overlay loaded!");
+console.log("Correct layout jigsaw script loaded (1.5x bigger)!");
