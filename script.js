@@ -30,10 +30,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('angry-customer-screen').style.display = 'grid';
     });
 
+    document.getElementById('customer-scene-next-btn').addEventListener('click', () => {
+        document.getElementById('angry-customer-screen').style.display = 'none';
+        document.getElementById('dialogue-puzzle-intro-screen').style.display = 'flex';
+    });
+
     document.getElementById('unlock-kit-btn').addEventListener('click', () => {
         document.getElementById('dialogue-puzzle-intro-screen').style.display = 'none';
         document.getElementById('ingredient-puzzle-screen').style.display = 'flex';
-        // The jigsaw puzzle is initialized in jigsaw.js, so no need to call initializePuzzle() here.
     });
 
     document.getElementById('customer-scene-back-btn').addEventListener('click', () => {
