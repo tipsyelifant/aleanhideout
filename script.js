@@ -60,7 +60,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const answer = document.getElementById('ingredient-answer').value.toUpperCase();
         if (answer === 'GEMBA') {
             document.getElementById('ingredient-puzzle-screen').style.display = 'none';
-            document.getElementById('answer-reveal-screen').style.display = 'block';
+            const didYouKnowScreen = document.getElementById('did-you-know-screen');
+            didYouKnowScreen.style.display = 'flex';
+
+            const backBtn = document.getElementById('did-you-know-back-btn');
+            const nextBtn = document.getElementById('did-you-know-next-btn');
+
+            backBtn.style.visibility = 'hidden';
+            nextBtn.style.visibility = 'hidden';
+
+            setTimeout(() => {
+                backBtn.style.visibility = 'visible';
+                nextBtn.style.visibility = 'visible';
+            }, 2000);
         } else {
             document.getElementById('ingredient-error-message').style.display = 'block';
         }
@@ -71,15 +83,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('dialogue-puzzle-intro-screen').style.display = 'flex';
     });
 
-    document.getElementById('reflection-btn').addEventListener('click', () => {
-        document.getElementById('answer-reveal-screen').style.display = 'none';
-        document.getElementById('reflection-screen').style.display = 'block';
+    document.getElementById('did-you-know-back-btn').addEventListener('click', () => {
+        document.getElementById('did-you-know-screen').style.display = 'none';
+        document.getElementById('ingredient-puzzle-screen').style.display = 'block';
     });
 
-    document.getElementById('finish-btn').addEventListener('click', () => {
-        // End of the game
-        console.log("Game finished!");
-        document.getElementById('reflection-screen').style.display = 'none';
+    document.getElementById('did-you-know-next-btn').addEventListener('click', () => {
+        // For now, just go back to the start screen.
+        document.getElementById('did-you-know-screen').style.display = 'none';
         document.getElementById('start-screen').style.display = 'block';
     });
 
