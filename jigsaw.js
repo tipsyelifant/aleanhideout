@@ -2,11 +2,14 @@
 function initializePuzzle() {
     console.log("Initializing simple puzzle...");
     
-    const puzzleContainer = document.getElementById('puzzle-container');
+    // FIXED: Target the correct puzzle container in the visible screen
+    const puzzleContainer = document.querySelector('#ingredient-puzzle-screen #puzzle-container');
     if (!puzzleContainer) {
-        console.error("Puzzle container not found!");
+        console.error("Puzzle container not found in ingredient-puzzle-screen!");
         return;
     }
+    
+    console.log("Found correct puzzle container!");
 
     // Clear container
     puzzleContainer.innerHTML = '';
@@ -24,9 +27,9 @@ function initializePuzzle() {
         overflow: visible !important;
     `;
 
-    // Show hints and answer box
-    const hintContainer = document.getElementById('hint-container');
-    const answerContainer = document.getElementById('ingredient-answer-container');
+    // Show hints and answer box - target the correct ones
+    const hintContainer = document.querySelector('#ingredient-puzzle-screen #hint-container');
+    const answerContainer = document.querySelector('#ingredient-puzzle-screen #ingredient-answer-container');
     if (hintContainer) hintContainer.style.display = 'block';
     if (answerContainer) answerContainer.style.display = 'block';
 
