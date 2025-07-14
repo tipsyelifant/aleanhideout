@@ -1,7 +1,6 @@
 function initializePuzzle() {
-    console.log("Starting clean jigsaw puzzle...");
+    console.log("Starting snapping jigsaw puzzle...");
     
-    // Find the correct container
     var puzzleContainer = document.querySelector('#ingredient-puzzle-screen #puzzle-container');
     if (!puzzleContainer) {
         console.error("Container not found!");
@@ -18,45 +17,91 @@ function initializePuzzle() {
     puzzleContainer.style.position = 'relative';
     puzzleContainer.style.display = 'block';
 
-    console.log("Container setup complete");
+    // Define correct positions for 3x3 grid (where pieces should end up)
+    var correctPositions = {
+        1: { x: 0, y: 0 },         // Top-left
+        2: { x: 200, y: 0 },       // Top-center  
+        3: { x: 400, y: 0 },       // Top-right
+        4: { x: 0, y: 133 },       // Middle-left
+        5: { x: 200, y: 133 },     // Middle-center
+        6: { x: 400, y: 133 },     // Middle-right
+        7: { x: 0, y: 266 },       // Bottom-left
+        8: { x: 200, y: 266 },     // Bottom-center
+        9: { x: 400, y: 266 }      // Bottom-right
+    };
+
+    var pieceWidth = 200;
+    var pieceHeight = 134;
+    var snapDistance = 40; // How close to snap
 
     // Create 9 pieces
     var pieces = [];
+    var placedPieces = {};
+
     for (var i = 1; i <= 9; i++) {
         var piece = document.createElement('img');
         piece.src = 'images/p' + i + '.png';
-        piece.style.width = '150px';
-        piece.style.height = '100px';
-        piece.style.position = 'absolute';
-        piece.style.border = '2px solid yellow';
-        piece.style.cursor = 'move';
+        piece.classList.add('puzzle-piece');
+        piece.dataset.pieceNumber = i;
+        piece.dataset.isPlaced = 'false';
         
-        // Random starting position
-        var startX = Math.random() * 400;
-        var startY = Math.random() * 250;
+        piece.style.width = pieceWidth + 'px';
+        piece.style.height = pieceHeight + 'px';
+        piece.style.position = 'absolute';
+        piece.style.border = '2px solid #FFD700';
+        piece.style.cursor = 'move';
+        piece.style.zIndex = '10';
+        
+        // Scatter pieces randomly outside the center area
+        var startX, startY;
+        if (i <= 3) {
+            // Top pieces - scatter above
+            startX = Math.random() * 400 + 50;
+            startY = Math.random() * 50 - 150;
+        } else if (i <= 6) {
+            // Middle pieces - scatter to sides
+            startX = Math.random() > 0.5 ? Math.random() * 100 - 200 : Math.random() * 100 + 650;
+            startY = Math.random() * 200 + 50;
+        } else {
+            // Bottom pieces - scatter below
+            startX = Math.random() * 400 + 50;
+            startY = Math.random() * 50 + 450;
+        }
+        
         piece.style.left = startX + 'px';
         piece.style.top = startY + 'px';
         
         pieces.push(piece);
         puzzleContainer.appendChild(piece);
         
-        console.log("Created piece " + i);
+        console.log("Created piece " + i + " at position " + startX + ", " + startY);
     }
 
-    console.log("All pieces created successfully!");
-
-    // Add drag functionality
+    // Drag functionality with snapping
     var draggedPiece = null;
-    var mouseOffset = {x: 0, y: 0};
+    var mouseOffset = { x: 0, y: 0 };
+    var originalPosition = { x: 0, y: 0 };
 
     pieces.forEach(function(piece) {
         piece.addEventListener('mousedown', function(e) {
+            if (piece.dataset.isPlaced === 'true') return; // Don't move placed pieces
+            
             draggedPiece = piece;
             var rect = piece.getBoundingClientRect();
+            var containerRect = puzzleContainer.getBoundingClientRect();
+            
             mouseOffset.x = e.clientX - rect.left;
             mouseOffset.y = e.clientY - rect.top;
+            
+            // Store original position in case we need to return it
+            originalPosition.x = parseInt(piece.style.left);
+            originalPosition.y = parseInt(piece.style.top);
+            
             piece.style.zIndex = '100';
-            console.log("Started dragging piece");
+            piece.style.transform = 'scale(1.05)';
+            piece.style.border = '2px solid #FFF700';
+            
+            console.log("Started dragging piece " + piece.dataset.pieceNumber);
         });
     });
 
@@ -73,16 +118,94 @@ function initializePuzzle() {
 
     document.addEventListener('mouseup', function() {
         if (draggedPiece) {
-            draggedPiece.style.zIndex = '1';
+            var piece = draggedPiece;
+            var pieceNumber = parseInt(piece.dataset.pieceNumber);
+            var correctPos = correctPositions[pieceNumber];
+            
+            var currentX = parseInt(piece.style.left);
+            var currentY = parseInt(piece.style.top);
+            
+            var distanceX = Math.abs(currentX - correctPos.x);
+            var distanceY = Math.abs(currentY - correctPos.y);
+            var distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+            
+            console.log("Piece " + pieceNumber + " dropped. Distance to target: " + distance);
+            
+            if (distance < snapDistance) {
+                // SNAP INTO PLACE!
+                piece.style.left = correctPos.x + 'px';
+                piece.style.top = correctPos.y + 'px';
+                piece.style.border = '1px solid #00FF00';
+                piece.style.zIndex = '50';
+                piece.style.transform = 'scale(1)';
+                piece.style.cursor = 'default';
+                piece.dataset.isPlaced = 'true';
+                
+                placedPieces[pieceNumber] = true;
+                
+                console.log("✅ Piece " + pieceNumber + " SNAPPED into place!");
+                
+                // Check if puzzle is complete
+                checkCompletion();
+                
+            } else {
+                // Return to normal draggable state
+                piece.style.zIndex = '10';
+                piece.style.transform = 'scale(1)';
+                piece.style.border = '2px solid #FFD700';
+                piece.style.cursor = 'move';
+                
+                console.log("❌ Piece " + pieceNumber + " not close enough to target");
+            }
+            
             draggedPiece = null;
-            console.log("Dropped piece");
         }
     });
 
-    console.log("Drag functionality added");
+    function checkCompletion() {
+        var placedCount = Object.keys(placedPieces).length;
+        console.log("Pieces placed: " + placedCount + "/9");
+        
+        if (placedCount === 9) {
+            console.log("🎉 PUZZLE COMPLETED!");
+            
+            // Remove all borders to create seamless image
+            pieces.forEach(function(piece) {
+                piece.style.border = 'none';
+                piece.style.boxShadow = '0 0 20px rgba(255, 215, 0, 0.8)';
+            });
+            
+            // Show completion message after a brief delay
+            setTimeout(function() {
+                alert("🎉 Puzzle Complete! The kitchen scene is restored. Now find the GEMBA clues in the image!");
+            }, 500);
+        }
+    }
+
+    // Double-click to return piece to original scattered position
+    pieces.forEach(function(piece) {
+        piece.addEventListener('dblclick', function() {
+            if (piece.dataset.isPlaced === 'true') {
+                // Remove from placed pieces
+                var pieceNumber = parseInt(piece.dataset.pieceNumber);
+                delete placedPieces[pieceNumber];
+                piece.dataset.isPlaced = 'false';
+                
+                // Return to original scattered position
+                piece.style.border = '2px solid #FFD700';
+                piece.style.cursor = 'move';
+                piece.style.zIndex = '10';
+                piece.style.boxShadow = 'none';
+                
+                console.log("Piece " + pieceNumber + " returned to scattered position");
+            }
+        });
+    });
+
+    console.log("Snapping jigsaw puzzle initialized! Drag pieces near their correct positions to snap them into place.");
 }
 
 // Make function available globally
 window.initializePuzzle = initializePuzzle;
 
-console.log("Jigsaw script loaded successfully!");
+console.log("Snapping jigsaw script loaded!");
