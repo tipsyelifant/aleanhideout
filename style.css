@@ -244,24 +244,26 @@ h2 {
     line-height: 1.6;
 }
 
-/* MAIN PUZZLE SCREEN - Ordered layout with side pieces */
+/* MAIN PUZZLE SCREEN - Exact layout from image */
 #ingredient-puzzle-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     min-height: 100vh;
     padding: 20px;
     overflow: visible;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* 1. PUZZLE CONTAINER - First, with side areas for pieces */
+/* 1. PUZZLE CONTAINER - First, 1.5x bigger (900x510) */
 #puzzle-container {
-    width: 600px;
-    height: 340px;
+    width: 900px;   /* 600 × 1.5 = 900 */
+    height: 510px;  /* 340 × 1.5 = 510 */
     background-color: #333;
     border: 3px solid white;
-    margin: 20px auto 30px auto; /* Bottom margin for spacing to next element */
+    margin: 20px auto 30px auto;
     position: relative;
     display: block;
     overflow: visible;
@@ -269,69 +271,76 @@ h2 {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    order: 1; /* First in order */
 }
 
-/* 2. PIECES AREAS - On left and right sides (created by JavaScript) */
+/* 2. PIECES AREAS - On left and right sides */
 #left-pieces-area, #right-pieces-area {
     /* Styling handled in JavaScript */
 }
 
-/* 3. ANSWER SECTION TITLE - Second (moved up) */
+/* 3. QUESTION HEADING - Exactly like in image */
 #ingredient-puzzle-screen h2 {
-    order: 2; /* Second in order - moved up */
-    margin: 10px 0 15px 0; /* Reduced top margin since pieces are on sides */
-    font-size: 28px;
+    margin: 20px 0 30px 0;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-/* 4. ANSWER CONTAINER - Third (moved up) */
+/* 4. ANSWER INPUT SECTION - Side by side like in image */
 #ingredient-answer-container {
-    display: block;
-    margin: 0 0 20px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 0 0 30px 0;
     z-index: 1;
-    order: 3; /* Third in order - moved up */
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 #ingredient-answer {
-    padding: 15px;
-    margin: 10px;
-    width: 300px;
+    padding: 15px 20px;
+    width: 350px;
     border-radius: 8px;
-    border: 2px solid #ccc;
-    font-size: 18px;
+    border: 2px solid #999;
+    font-size: 16px;
     text-align: center;
     text-transform: uppercase;
     background-color: white;
-    color: #333;
-    font-weight: bold;
+    color: #666;
+    font-weight: normal;
+    margin: 0;
+}
+
+#ingredient-answer::placeholder {
+    color: #999;
+    font-weight: normal;
+    text-transform: uppercase;
 }
 
 #ingredient-answer:focus {
     border-color: #4CAF50;
     outline: none;
     box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+    color: #333;
 }
 
 #submit-ingredient-answer-btn {
     padding: 15px 30px;
-    background-color: #4CAF50;
+    background-color: #5cb85c;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    margin-left: 15px;
+    margin: 0;
     transition: background-color 0.2s ease;
+    white-space: nowrap;
 }
 
 #submit-ingredient-answer-btn:hover {
-    background-color: #45a049;
-    transform: translateY(-1px);
+    background-color: #4CAF50;
 }
 
 #ingredient-error-message {
@@ -339,49 +348,54 @@ h2 {
     margin-top: 10px;
     font-weight: bold;
     font-size: 16px;
+    position: absolute;
+    width: 100%;
+    text-align: center;
 }
 
-/* 5. HINT CONTAINER - Fourth (moved up) */
+/* 5. HINT CONTAINER - Below input, exactly like in image */
 #hint-container {
-    margin: 20px 0;
+    margin: 0 0 20px 0;
     display: block;
-    max-width: 600px;
+    max-width: 700px;
+    width: 100%;
     z-index: 1;
-    order: 4; /* Fourth in order - moved up */
 }
 
 .hint-box {
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid #999;
     margin-bottom: 15px;
     border-radius: 8px;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.9);
 }
 
 .hint-title {
-    background-color: rgba(240, 240, 240, 0.9);
+    background-color: #f0f0f0;
     color: #333;
-    padding: 15px;
+    padding: 15px 20px;
     cursor: pointer;
     font-weight: bold;
     font-size: 16px;
     transition: background-color 0.2s ease;
+    text-align: left;
 }
 
 .hint-title:hover {
-    background-color: rgba(224, 224, 224, 0.9);
+    background-color: #e0e0e0;
 }
 
 .hint-content {
     padding: 20px;
     display: none;
     color: #333;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: white;
     line-height: 1.6;
     font-size: 15px;
+    text-align: left;
 }
 
-/* PUZZLE PIECES - Small in side areas, full size when dragging/placed */
+/* PUZZLE PIECES - 1.5x bigger */
 .puzzle-piece {
     border: 2px solid #FFD700;
     cursor: grab;
@@ -421,6 +435,7 @@ h2 {
     display: none;
 }
 
+/* BACK BUTTON AND OTHER SCREENS */
 #answer-reveal-screen button, #reflection-screen button {
     padding: 10px 20px;
     background-color: #4CAF50;
@@ -442,6 +457,31 @@ h2 {
 }
 
 /* MOBILE RESPONSIVENESS */
+@media (max-width: 1200px) {
+    #ingredient-puzzle-screen {
+        max-width: 100%;
+        padding: 10px;
+    }
+    
+    #puzzle-container {
+        width: 90vw;
+        height: 51vw;
+        max-width: 700px;
+        max-height: 397px;
+    }
+
+    #left-pieces-area, #right-pieces-area {
+        position: static !important;
+        width: 90vw !important;
+        max-width: 400px !important;
+        height: auto !important;
+        margin: 10px auto !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+}
+
 @media (max-width: 600px) {
     #character-lineup {
         flex-wrap: wrap;
@@ -470,29 +510,21 @@ h2 {
         margin: 0 auto 20px;
     }
     
-    /* Mobile puzzle adjustments */
     #puzzle-container {
         width: 90vw;
         height: 51vw;
-        max-width: 500px;
-        max-height: 283px;
-    }
-
-    /* Hide side pieces areas on mobile, stack pieces below instead */
-    #left-pieces-area, #right-pieces-area {
-        position: static !important;
-        width: 90vw !important;
-        max-width: 500px !important;
-        height: auto !important;
-        margin: 10px auto !important;
-        flex-direction: row !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
+        max-width: 400px;
+        max-height: 227px;
     }
     
-    .puzzle-piece {
-        min-width: 60px;
-        min-height: 34px;
+    #ingredient-puzzle-screen h2 {
+        font-size: 24px;
+        margin: 15px 0 20px 0;
+    }
+    
+    #ingredient-answer-container {
+        flex-direction: column;
+        gap: 10px;
     }
 
     #ingredient-answer {
@@ -500,13 +532,16 @@ h2 {
         font-size: 16px;
     }
     
+    #submit-ingredient-answer-btn {
+        width: 250px;
+    }
+    
     .hint-box {
         margin: 10px;
     }
-
-    #submit-ingredient-answer-btn {
-        margin-left: 0;
-        margin-top: 10px;
-        display: block;
+    
+    .puzzle-piece {
+        min-width: 60px;
+        min-height: 34px;
     }
 }
