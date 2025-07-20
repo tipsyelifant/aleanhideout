@@ -124,8 +124,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('puzzle-2-did-you-know-next-btn').addEventListener('click', () => {
-        // For now, just go back to the start screen.
         document.getElementById('puzzle-2-did-you-know-screen').style.display = 'none';
+        document.getElementById('puzzle-3-intro-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-3-intro-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-3-intro-screen').style.display = 'none';
+        document.getElementById('puzzle-2-did-you-know-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-3-intro-next-btn').addEventListener('click', () => {
+        // This will eventually lead to the puzzle 3 main screen
+        // For now, just go back to the start screen.
+        document.getElementById('puzzle-3-intro-screen').style.display = 'none';
         document.getElementById('start-screen').style.display = 'block';
     });
 
