@@ -458,18 +458,22 @@ h2 {
 
 .info-box-container {
     display: flex;
-    gap: 30px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
     width: 100%;
     max-width: 900px;
-    justify-content: center;
 }
 
 .info-box {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 1.5rem;
     background-color: rgba(0, 0, 0, 0.2);
     border: 2px solid rgba(255, 255, 255, 0.5);
-    border-radius: 15px;
-    padding: 25px;
-    width: 45%;
     box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
@@ -555,6 +559,12 @@ h2 {
 }
 
 /* MOBILE RESPONSIVENESS */
+@media (max-width: 767px) {
+  .info-box-container {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 1200px) {
     .info-box-container {
         flex-direction: column;
