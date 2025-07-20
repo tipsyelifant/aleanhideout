@@ -636,6 +636,24 @@ th {
     flex-grow: 1;
 }
 
+#puzzle-3-did-you-know-screen .info-box-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+    align-items: flex-start;
+}
+
+#puzzle-3-did-you-know-screen .character-container {
+    flex-basis: 250px;
+}
+
+#puzzle-3-did-you-know-screen .info-box {
+    flex: 1;
+    margin: 0 10px;
+}
+
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 767px) {
     .puzzle-3-container {
