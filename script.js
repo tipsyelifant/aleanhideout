@@ -111,16 +111,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('submit-puzzle-2-answer-btn').addEventListener('click', () => {
         const answer = document.getElementById('puzzle-2-answer').value.toUpperCase();
         if (answer === 'VALUEADD') {
-            document.getElementById('puzzle-2-error-message').style.display = 'none';
-            document.getElementById('puzzle-2-next-puzzle-btn').style.display = 'block';
+            document.getElementById('puzzle-2-screen').style.display = 'none';
+            document.getElementById('puzzle-2-did-you-know-screen').style.display = 'flex';
         } else {
             document.getElementById('puzzle-2-error-message').style.display = 'block';
         }
     });
 
-    document.getElementById('puzzle-2-next-puzzle-btn').addEventListener('click', () => {
+    document.getElementById('puzzle-2-did-you-know-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-2-did-you-know-screen').style.display = 'none';
+        document.getElementById('puzzle-2-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-2-did-you-know-next-btn').addEventListener('click', () => {
         // For now, just go back to the start screen.
-        document.getElementById('puzzle-2-screen').style.display = 'none';
+        document.getElementById('puzzle-2-did-you-know-screen').style.display = 'none';
         document.getElementById('start-screen').style.display = 'block';
     });
 
