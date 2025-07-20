@@ -157,11 +157,22 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('submit-puzzle-3-answer-btn').addEventListener('click', () => {
         const answer = document.getElementById('puzzle-3-answer').value;
         if (answer === '96') {
-            // For now, just go back to the start screen.
             document.getElementById('puzzle-3-main-screen').style.display = 'none';
-            document.getElementById('start-screen').style.display = 'block';
+            document.getElementById('puzzle-3-did-you-know-screen').style.display = 'flex';
         } else {
             document.getElementById('puzzle-3-error-message').style.display = 'block';
         }
+    });
+
+    document.getElementById('puzzle-3-did-you-know-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-3-did-you-know-screen').style.display = 'none';
+        document.getElementById('puzzle-3-main-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-3-did-you-know-next-btn').addEventListener('click', () => {
+        // This will eventually lead to the puzzle 4 intro screen
+        // For now, just go back to the start screen.
+        document.getElementById('puzzle-3-did-you-know-screen').style.display = 'none';
+        document.getElementById('start-screen').style.display = 'block';
     });
 });
