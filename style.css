@@ -442,7 +442,7 @@ h2 {
     text-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 }
 
-#did-you-know-screen, #puzzle-2-did-you-know-screen {
+#did-you-know-screen {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -558,6 +558,10 @@ h2 {
     border: 1px solid #ccc;
 }
 
+#puzzle-2-did-you-know-screen .info-box-container {
+    flex-direction: row !important;
+}
+
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 767px) {
   .info-box-container {
@@ -566,6 +570,12 @@ h2 {
 }
 
 @media (max-width: 1200px) {
+    .info-box-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
     .info-box {
         width: 80%;
         max-width: 600px;
