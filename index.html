@@ -273,6 +273,114 @@
                 <button id="puzzle-3-intro-next-btn" class="btn">Next</button>
             </div>
         </div>
+
+        <div id="puzzle-3-main-screen" style="display: none;">
+            <h2>Puzzle 3/4</h2>
+            <div class="puzzle-3-container">
+                <div class="puzzle-table-section">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Step</th>
+                                <th>Process Time (mins)</th>
+                                <th>Wait Time (mins)</th>
+                                <th>Lead Time (mins)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Read Order</td>
+                                <td>2</td>
+                                <td>▲</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Take Ingredients</td>
+                                <td>3</td>
+                                <td>◆</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Chope Ingredients</td>
+                                <td>▲</td>
+                                <td>5</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Put in Steamboat</td>
+                                <td>4</td>
+                                <td>●</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Wait for cooking</td>
+                                <td>0</td>
+                                <td>●</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Plate</td>
+                                <td>●</td>
+                                <td>2</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Serve</td>
+                                <td>3</td>
+                                <td>▲</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Wash Plate</td>
+                                <td>◆</td>
+                                <td>1</td>
+                                <td>12</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="puzzle-prompt">
+                        <h3>What is the Lead Time for “Take Ingredients”?</h3>
+                        <input type="text" id="puzzle-3-answer" placeholder="Enter your answer">
+                        <button id="submit-puzzle-3-answer-btn" class="btn">Submit</button>
+                        <p id="puzzle-3-error-message" style="color: red; display: none;">Incorrect. Please try again.</p>
+                    </div>
+                </div>
+                <div class="heidi-clues">
+                    <h4>Heidi's Clues</h4>
+                    <p>📝 1. Chope + Serve = Take + Read</p>
+                    <p>📝 2. Put in Steamboat + Wait = 24 minutes</p>
+                </div>
+            </div>
+            <div class="clue-section">
+                <img src="images/clue buddy.png" alt="Clue Buddy" class="clue-buddy">
+                <div class="clue-panels">
+                    <div class="hint-box">
+                        <div class="hint-title">▶️ Clue 1</div>
+                        <div class="hint-content">
+                            <p>Each symbol stands for a unique number between 5 and 15 minutes.</p>
+                            <p>You’ll need to decode them to reveal the true Lead Time.</p>
+                            <p>Try comparing the total times between rows — the clues are hidden in plain sight...</p>
+                        </div>
+                    </div>
+                    <div class="hint-box">
+                        <div class="hint-title">▶️ Clue 2</div>
+                        <div class="hint-content">
+                            <p>Ready to narrow it down?</p>
+                            <p>▲ = 8</p>
+                            <p>◆ = 11</p>
+                            <p>● = 10</p>
+                            <p>Now go back, fill them in, and sum up (Process + Wait) for all steps to unlock the total Lead Time.</p>
+                        </div>
+                    </div>
+                    <div class="hint-box">
+                        <div class="hint-title">▶️ Answer</div>
+                        <div class="hint-content">
+                            <p>✅ Total Lead Time = 96</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
     <script src="jigsaw.js"></script>
