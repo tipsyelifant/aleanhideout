@@ -134,17 +134,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('puzzle-3-intro-next-btn').addEventListener('click', () => {
-        // This will eventually lead to the puzzle 3 main screen
-        // For now, just go back to the start screen.
         document.getElementById('puzzle-3-intro-screen').style.display = 'none';
-        document.getElementById('start-screen').style.display = 'block';
+        document.getElementById('puzzle-3-main-screen').style.display = 'flex';
     });
 
     const hintTitles = document.querySelectorAll('.hint-title');
     hintTitles.forEach(title => {
         title.addEventListener('click', () => {
             const content = title.nextElementSibling;
-            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+            const isVisible = content.style.display === 'block';
+
+            // Close all hint contents
+            hintTitles.forEach(otherTitle => {
+                otherTitle.nextElementSibling.style.display = 'none';
+            });
+
+            // Toggle the clicked one
+            content.style.display = isVisible ? 'none' : 'block';
         });
+    });
+
+    document.getElementById('submit-puzzle-3-answer-btn').addEventListener('click', () => {
+        const answer = document.getElementById('puzzle-3-answer').value;
+        if (answer === '96') {
+            // For now, just go back to the start screen.
+            document.getElementById('puzzle-3-main-screen').style.display = 'none';
+            document.getElementById('start-screen').style.display = 'block';
+        } else {
+            document.getElementById('puzzle-3-error-message').style.display = 'block';
+        }
     });
 });
