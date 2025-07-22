@@ -147,6 +147,35 @@ h2 {
     font-size: 16px;
 }
 
+#puzzle-4-screen .clue-section {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#puzzle-4-screen .clue-buddy {
+    width: 100px;
+    margin-right: 20px;
+}
+
+#puzzle-4-screen .clue-panels {
+    flex-grow: 1;
+}
+
+#puzzle-4-screen .hint-box {
+    margin-bottom: 10px;
+}
+
+#puzzle-4-screen .hint-title {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#puzzle-4-screen .button-group {
+    margin-top: 20px;
+    text-align: center;
+}
+
 .draggable-quote:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
