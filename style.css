@@ -100,7 +100,7 @@ h2 {
 #puzzle-4-container {
     position: relative;
     width: 900px;
-    height: 600px;
+    height: 500px; /* Adjusted height */
     margin-bottom: 20px;
 }
 
@@ -113,74 +113,83 @@ h2 {
     z-index: -1;
 }
 
-#puzzle-4-elements {
-    position: relative;
-    width: 100%;
-    height: 100%;
+#quotes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    max-height: 460px; /* Adjusted to fit within the container */
+    overflow-y: auto;
 }
 
 .draggable-quote {
-    position: absolute;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    width: 250px; /* Increased width for better readability */
+    min-height: 80px; /* Set a minimum height */
     cursor: grab;
-    z-index: 10;
-    background-color: white;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    padding: 10px;
-    width: 200px;
     text-align: center;
-    color: black;
-}
-
-.draggable-quote img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-}
-
-.draggable-quote.dragging {
-    opacity: 0.5;
-}
-
-.draggable-quote.placed {
-    cursor: default;
-    border: 2px solid green;
-}
-
-.drop-zone {
-    position: absolute;
-    width: 220px;
-    height: 150px;
-    border: 2px dashed #ccc;
-    border-radius: 10px;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.draggable-quote:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.draggable-quote.dragging {
+    opacity: 0.6;
+    cursor: grabbing;
+}
+
+#drop-zones-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 20px;
+}
+
+.drop-zone {
+    border: 3px dashed #aaa;
+    border-radius: 12px;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.drop-zone p {
+    font-weight: bold;
     font-size: 1.2em;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    color: #fff;
 }
 
 .drop-zone.over {
-    border: 2px dashed #000;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #fff;
 }
 
-/* Positioning of elements */
-#chef-whine { top: 250px; left: 50px; }
-#chopping-clash { top: 350px; left: 650px; }
-#rotating-stove { top: 50px; left: 650px; }
-#ingredient-run { top: 450px; left: 300px; }
-#clean-plate { top: 50px; left: 300px; }
-#clean-sink { top: 450px; left: 50px; }
-#golden-guardian { top: 50px; left: 50px; }
-#lantern { top: 50px; left: 500px; }
-#zen-garden { top: 450px; left: 650px; }
-
-#intellect-zone { top: 20px; left: 20px; }
-#motion-zone { top: 20px; left: 660px; }
-#defects-zone { top: 430px; left: 20px; }
-#transport-zone { top: 430px; left: 660px; }
+.drop-zone .draggable-quote {
+    cursor: default;
+    background-color: #d4edda; /* Light green for correct drop */
+    border-color: #c3e6cb;
+}
 
 #puzzle-4-answer-container {
     display: flex;
