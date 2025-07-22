@@ -128,8 +128,8 @@ h2 {
     border: 2px solid #ddd;
     border-radius: 10px;
     padding: 15px;
-    width: 250px; /* Increased width for better readability */
-    min-height: 80px; /* Set a minimum height */
+    width: 220px; /* Adjusted width */
+    min-height: 100px; /* Adjusted height */
     cursor: grab;
     text-align: center;
     font-size: 14px;
@@ -137,8 +137,14 @@ h2 {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
+    flex-direction: column; /* Arrange title and text vertically */
     align-items: center;
     justify-content: center;
+}
+
+.draggable-quote h4 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
 }
 
 .draggable-quote:hover {
@@ -152,8 +158,8 @@ h2 {
 }
 
 #drop-zones-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex; /* Changed to flexbox */
+    justify-content: center; /* Center the items */
     gap: 20px;
     width: 100%;
     max-width: 900px;
