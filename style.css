@@ -87,6 +87,15 @@ h2 {
     padding: 20px;
 }
 
+#puzzle-4-did-you-know-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
 #puzzle-4-screen {
     display: flex;
     flex-direction: column;
