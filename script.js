@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     nextDialogueBtn.addEventListener('click', () => {
         storyScreen.style.display = 'none';
-        document.getElementById('angry-customer-screen').style.display = 'grid';
+        document.getElementById('angry-customer-screen').style.display = 'flex';
     });
 
     document.getElementById('customer-scene-next-btn').addEventListener('click', () => {
