@@ -68,9 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
             feedback.textContent = 'Correct!';
             feedback.style.color = 'green';
             feedback.style.display = 'block';
-            // Optionally, move to the next screen
-            // puzzle4Screen.style.display = 'none';
-            // document.getElementById('next-screen').style.display = 'block';
+            setTimeout(() => {
+                puzzle4Screen.style.display = 'none';
+                document.getElementById('puzzle-4-did-you-know-screen').style.display = 'flex';
+            }, 1000);
         } else {
             feedback.textContent = 'Try again';
             feedback.style.color = 'red';
