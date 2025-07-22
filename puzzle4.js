@@ -78,6 +78,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Initially disable the answer input
-    answerInput.disabled = true;
 });
