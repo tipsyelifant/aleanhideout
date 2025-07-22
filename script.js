@@ -188,4 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('puzzle-4-screen').style.display = 'none';
         document.getElementById('puzzle-4-intro-screen').style.display = 'flex';
     });
+
+    document.getElementById('puzzle-4-did-you-know-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-4-did-you-know-screen').style.display = 'none';
+        document.getElementById('puzzle-4-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-4-did-you-know-next-btn').addEventListener('click', () => {
+        // This is the end of the game in this prototype
+        alert("Congratulations! You have completed the Lean Hideout puzzle quest.");
+    });
 });
