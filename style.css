@@ -118,6 +118,11 @@ h2 {
     color: #aaa;
 }
 
+#congratulations-screen .button-group .btn {
+    margin: 0 10px;
+    text-decoration: none;
+}
+
 #puzzle-4-screen {
     display: flex;
     flex-direction: column;
