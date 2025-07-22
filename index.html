@@ -422,8 +422,74 @@
                 <button id="puzzle-4-intro-next-btn" class="btn">Next</button>
             </div>
         </div>
+
+        <div id="puzzle-4-screen" style="display: none;">
+            <h2>What is the 5-letter code?</h2>
+            <div id="puzzle-4-container">
+                <img src="images/Clean kitchen.png" alt="Kitchen Background" class="puzzle-background">
+                <div id="puzzle-4-elements">
+                    <!-- Draggable Quotes -->
+                    <div class="draggable-quote" id="chef-whine">
+                        <img src="images/p4 - chef whine.jpg" alt="Chef Whine">
+                        <p>“We’re all doing the same full cycle — no one's splitting tasks. So slow!”</p>
+                    </div>
+                    <div class="draggable-quote" id="chopping-clash">
+                        <img src="images/p4 - chopping clash.jpg" alt="Chopping Clash">
+                        <p>“The board’s is too near to each other — we keep crashing into each other here.”</p>
+                    </div>
+                    <div class="draggable-quote" id="rotating-stove">
+                        <img src="images/p4 - rotating stove.jpg" alt="Rotating Stove">
+                        <p>“Only 2 of 4 stoves light up at a time. Takes time to move the pot to a working one”</p>
+                    </div>
+                    <div class="draggable-quote" id="ingredient-run">
+                        <img src="images/p4 - ingredient run.jpg" alt="Ingredient Run">
+                        <p>“I have to walk back and forth for ingredients - can’t pick up more than one at a time!”</p>
+                    </div>
+                    <div class="draggable-quote" id="clean-plate">
+                        <img src="images/p4 - clean plate.jpg" alt="Clean Plate">
+                        <p>“The dessert taste so good.”</p>
+                    </div>
+                    <div class="draggable-quote" id="clean-sink">
+                        <img src="images/p4 - clean sink.jpg" alt="Clean Sink">
+                        <p>“Plates are washed fast today — great job!”</p>
+                    </div>
+                    <div class="draggable-quote" id="golden-guardian">
+                        <img src="images/p4 - golden guardian.jpg" alt="Golden Guardian">
+                        <p>“The dragon watches over the broth with pride.”</p>
+                    </div>
+                    <div class="draggable-quote" id="lantern">
+                        <img src="images/p4 - lantern.jpg" alt="Lantern">
+                        <p>“Shining bright and steady as ever!”</p>
+                    </div>
+                    <div class="draggable-quote" id="zen-garden">
+                        <img src="images/p4 - zen garden.jpg" alt="Zen Garden">
+                        <p>“A peaceful koi swims under the bridge...”</p>
+                    </div>
+
+                    <!-- Drop Zones -->
+                    <div class="drop-zone" id="intellect-zone">
+                        <p>Intellect</p>
+                    </div>
+                    <div class="drop-zone" id="motion-zone">
+                        <p>Motion</p>
+                    </div>
+                    <div class="drop-zone" id="defects-zone">
+                        <p>Defects</p>
+                    </div>
+                    <div class="drop-zone" id="transport-zone">
+                        <p>Transport</p>
+                    </div>
+                </div>
+            </div>
+            <div id="puzzle-4-answer-container">
+                <input type="text" id="puzzle-4-answer" placeholder="Enter 5-letter code" maxlength="5">
+                <button id="submit-puzzle-4-answer-btn" class="btn">Submit</button>
+            </div>
+            <p id="puzzle-4-feedback" style="display: none;"></p>
+        </div>
     </div>
     <script src="script.js"></script>
     <script src="jigsaw.js"></script>
+    <script src="puzzle4.js"></script>
 </body>
 </html>
