@@ -183,4 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('puzzle-4-intro-screen').style.display = 'none';
         document.getElementById('puzzle-4-screen').style.display = 'flex';
     });
+
+    document.getElementById('puzzle-4-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-4-screen').style.display = 'none';
+        document.getElementById('puzzle-4-intro-screen').style.display = 'flex';
+    });
 });
