@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('puzzle-4-did-you-know-next-btn').addEventListener('click', () => {
-        // This is the end of the game in this prototype
-        alert("Congratulations! You have completed the Lean Hideout puzzle quest.");
+        document.getElementById('puzzle-4-did-you-know-screen').style.display = 'none';
+        document.getElementById('congratulations-screen').style.display = 'flex';
     });
 });
