@@ -180,9 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('puzzle-4-intro-next-btn').addEventListener('click', () => {
-        // This will eventually lead to the puzzle 4 main screen
-        // For now, just go back to the start screen.
         document.getElementById('puzzle-4-intro-screen').style.display = 'none';
-        document.getElementById('start-screen').style.display = 'block';
+        document.getElementById('puzzle-4-screen').style.display = 'flex';
     });
 });
