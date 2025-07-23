@@ -66,13 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const backBtn = document.getElementById('did-you-know-back-btn');
             const nextBtn = document.getElementById('did-you-know-next-btn');
 
-            #backBtn.style.visibility = 'hidden';
-            #nextBtn.style.visibility = 'hidden';
-
-            #setTimeout(() => {
-                #backBtn.style.visibility = 'visible';
-                #nextBtn.style.visibility = 'visible';
-            #}, 2000);
         } else {
             document.getElementById('ingredient-error-message').style.display = 'block';
         }
