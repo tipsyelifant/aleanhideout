@@ -194,9 +194,9 @@ h2 {
     margin-right: 20px;
 }
 
-#puzzle-4-screen .clue-panels {
+/* #puzzle-4-screen .clue-panels {
     flex-grow: 1;
-}
+} */
 
 #puzzle-4-screen .hint-box {
     margin-bottom: 10px;
@@ -847,7 +847,7 @@ th {
     margin-right: 20px;
 }
 
-.clue-panels {
+#clue-panels {
     margin: 0 0 20px 0;
     display: block;
     max-width: 500px;

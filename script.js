@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('puzzle-3-back-btn').addEventListener('click', () => {
-            document.getElementById('puzzle-3-intro-screen').style.display = 'none';
+            document.getElementById('puzzle-3-main-screen').style.display = 'none';
             document.getElementById('puzzle-3-did-you-know-screen').style.display = 'flex';
     });
 
