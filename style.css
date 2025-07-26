@@ -754,6 +754,7 @@ h2 {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-bottom: 10px;
 }
 
 #puzzle-2-answer {
