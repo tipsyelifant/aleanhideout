@@ -532,6 +532,24 @@ h2 {
     background-color: #4CAF50;
 }
 
+#submit-puzzle-2-answer-btn {
+    padding: 15px 30px;
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+#submit-puzzle-2-answer-btn:hover {
+    background-color: #4CAF50;
+}
+
 #ingredient-error-message {
     color: #ff6b6b;
     margin-top: 10px;
