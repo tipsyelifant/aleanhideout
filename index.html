@@ -111,23 +111,26 @@
                 <button id="submit-ingredient-answer-btn" class="btn">Submit</button>
                 <p id="ingredient-error-message" style="color: red; display: none;">Incorrect. Please try again.</p>
             </div>
-            <div id="hint-container">
-                <div class="hint-box">
-                    <div class="hint-title">▸ Clue 1</div>
-                    <div class="hint-content">
-                        <p>Try starting from the top-left vegetable pile and make your way anti-clockwise around the kitchen. Keep an eye on how many of each ingredient you pass — maybe they’re hiding letters?</p>
+            <div class="clue-section">
+                <img src="images/clue buddy.png" alt="Clue Buddy" class="clue-buddy">
+                <div id="hint-container">
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Clue 1</div>
+                        <div class="hint-content">
+                            <p>Try starting from the top-left vegetable pile and make your way anti-clockwise around the kitchen. Keep an eye on how many of each ingredient you pass — maybe they’re hiding letters?</p>
+                        </div>
                     </div>
-                </div>
-                <div class="hint-box">
-                    <div class="hint-title">▸ Clue 2</div>
-                    <div class="hint-content">
-                        <p>Each ingredient name holds a clue. Count how many of each type you see, and take that letter from the ingredient name. For example: 3 vegetables? That’s the 3rd letter in “Vegetable”, which is G. Keep going anti-clockwise to find the 5-letter code!</p>
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Clue 2</div>
+                        <div class="hint-content">
+                            <p>Each ingredient name holds a clue. Count how many of each type you see, and take that letter from the ingredient name. For example: 3 vegetables? That’s the 3rd letter in “Vegetable”, which is G. Keep going anti-clockwise to find the 5-letter code!</p>
+                        </div>
                     </div>
-                </div>
-                <div class="hint-box">
-                    <div class="hint-title">▸ Reveal Answer</div>
-                    <div class="hint-content">
-                        <p>gemba</p>
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Reveal Answer</div>
+                        <div class="hint-content">
+                            <p>gemba</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -157,7 +160,7 @@
             </div>
             <div class="button-group">
                 <button id="did-you-know-back-btn" class="btn btn-gray">Back</button>
-                <button id="did-you-know-next-btn" class="btn">Next Puzzle</button>
+                <button id="did-you-know-next-btn" class="btn">Next</button>
             </div>
         </div>
 
@@ -197,35 +200,38 @@
                 <button id="submit-puzzle-2-answer-btn" class="btn">Submit</button>
             </div>
             <p id="puzzle-2-error-message" style="color: red; display: none;">Incorrect. Please try again.</p>
-            <div id="puzzle-2-hint-container">
-                <div class="hint-box">
-                    <div class="hint-title">▸ Clue 1</div>
-                    <div class="hint-content">
-                        <p>Follow the yellow chef closely…<br>
-                        Every move they make is part of the kitchen’s rhythm.<br>
-                        Each step in the kitchen flow is paired with a clue — don’t miss the letters they leave behind!</p>
+            <div class="clue-section">
+                <img src="images/clue buddy.png" alt="Clue Buddy" class="clue-buddy">
+                <div id="puzzle-2-hint-container">
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Clue 1</div>
+                        <div class="hint-content">
+                            <p>Follow the yellow chef closely…<br>
+                            Every move they make is part of the kitchen’s rhythm.<br>
+                            Each step in the kitchen flow is paired with a clue — don’t miss the letters they leave behind!</p>
+                        </div>
                     </div>
-                </div>
-                <div class="hint-box">
-                    <div class="hint-title">▸ Clue 2</div>
-                    <div class="hint-content">
-                        <p>Each step in the kitchen process gives you one letter.<br>
-                        Watch how the yellow chef moves through the 8 steps — from reading the order to washing the plate.<br>
-                        For every action, find the matching letter tag in the video.<br>
-                        Put them together to unlock the 8-letter word.<br>
-                        The first letter is V.</p>
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Clue 2</div>
+                        <div class="hint-content">
+                            <p>Each step in the kitchen process gives you one letter.<br>
+                            Watch how the yellow chef moves through the 8 steps — from reading the order to washing the plate.<br>
+                            For every action, find the matching letter tag in the video.<br>
+                            Put them together to unlock the 8-letter word.<br>
+                            The first letter is V.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="hint-box">
-                    <div class="hint-title">▸ Reveal Answer</div>
-                    <div class="hint-content">
-                        <p>VALUEADD</p>
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Reveal Answer</div>
+                        <div class="hint-content">
+                            <p>VALUEADD</p>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="button-group">
                 <button id="puzzle-2-back-btn" class="btn btn-gray">Back</button>
-                <button id="puzzle-2-next-puzzle-btn" class="btn" style="display: none;">Next Puzzle</button>
+                <button id="puzzle-2-next-puzzle-btn" class="btn" style="display: none;">Next</button>
             </div>
         </div>
 
@@ -255,8 +261,8 @@
                 </div>
             </div>
             <div class="button-group">
-                <button id="puzzle-2-did-you-know-back-btn" class="btn btn-gray">⬅️ Back</button>
-                <button id="puzzle-2-did-you-know-next-btn" class="btn">➡️ Next Puzzle</button>
+                <button id="puzzle-2-did-you-know-back-btn" class="btn btn-gray">Back</button>
+                <button id="puzzle-2-did-you-know-next-btn" class="btn">Next</button>
             </div>
         </div>
 
@@ -382,6 +388,9 @@
                             <p>✅ Total Lead Time = 96</p>
                         </div>
                     </div>
+                </div>
+                <div class="button-group">
+                    <button id="puzzle-3-back-btn" class="btn btn-gray">Back</button>
                 </div>
             </div>
         </div>
