@@ -95,6 +95,7 @@ h2 {
     min-height: 100vh;
     width: max-content;
     gap: 20px;
+    justify-self: center;
 }
 
 .congrats-container {
@@ -667,6 +668,7 @@ h2 {
     min-height: 100vh;
     width: max-content;
     gap: 20px;
+    justify-self: center;
 }
 
 #did-you-know-screen h2, #puzzle-2-did-you-know-screen h2 {
