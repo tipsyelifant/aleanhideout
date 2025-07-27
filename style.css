@@ -93,7 +93,8 @@ h2 {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 20px;
+    width: max-content;
+    gap: 20px;
 }
 
 .congrats-container {
@@ -183,11 +184,11 @@ h2 {
     font-size: 16px;
 }
 
-#puzzle-4-screen .clue-section {
+/* #puzzle-4-screen .clue-section {
     display: flex;
     align-items: center;
     margin-top: 20px;
-}
+} */
 
 #puzzle-4-screen .clue-buddy {
     width: 100px;
@@ -266,6 +267,7 @@ h2 {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-top: 20px;
 }
 
 #puzzle-4-answer {
@@ -663,7 +665,8 @@ h2 {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    padding: 20px;
+    width: max-content;
+    gap: 20px;
 }
 
 #did-you-know-screen h2, #puzzle-2-did-you-know-screen h2 {
@@ -791,8 +794,11 @@ h2 {
 }
 
 .puzzle-table-section {
+    display: flex;
+    flex-direction: row;
     flex-grow: 1;
     margin-right: 20px;
+    gap: 30px;
 }
 
 .heidi-clues {
@@ -840,6 +846,8 @@ th {
     display: flex;
     align-items: center;
     margin-top: 20px;
+    width: 500px;
+    justify-self: center;
 }
 
 .clue-buddy {
