@@ -682,6 +682,7 @@ h2 {
     flex-wrap: wrap;
     width: 100%;
     max-width: 900px;
+    justify-self: center;
 }
 
 .info-box {
@@ -717,13 +718,13 @@ h2 {
     margin-bottom: 15px;
 }
 
-#did-you-know-screen .button-group {
+/* #did-you-know-screen .button-group {
     margin-top: 40px;
     width: 100%;
     max-width: 900px;
     display: flex;
     justify-content: space-between;
-}
+} */
 
 .btn:hover {
     transform: translateY(-3px);
