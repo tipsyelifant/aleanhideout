@@ -339,7 +339,7 @@ function initializePuzzle() {
                 puzzleContainer.style.boxShadow = '0 0 40px rgba(255, 215, 0, 0.8)';
                 
                 setTimeout(function() {
-                    alert("🎉 Puzzle Complete! The kitchen scene is restored. Now find the GEMBA clues in the completed image!");
+                    alert("🎉 Puzzle Complete! The kitchen scene is restored.");
                 }, 800);
             }, 500);
         }
