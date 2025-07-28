@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('submit-puzzle-3-answer-btn').addEventListener('click', () => {
         const answer = document.getElementById('puzzle-3-answer').value;
-        if (answer === '96') {
+        if (answer === '14') {
             document.getElementById('puzzle-3-main-screen').style.display = 'none';
             document.getElementById('puzzle-3-did-you-know-screen').style.display = 'flex';
         } else {
