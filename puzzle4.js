@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('puzzle-4-did-you-know-screen').style.display = 'flex';
             }, 1000);
         } else {
-            feedback.textContent = 'Try again';
+            feedback.textContent = 'Incorrect, please try again';
             feedback.style.color = 'red';
             feedback.style.display = 'block';
         }
