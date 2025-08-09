@@ -110,29 +110,6 @@ function initializePuzzle() {
         console.log("Created piece " + i + " for side areas (1.5x bigger)");
     }
 
-    // --- Pre-place the top-left piece (piece #1) ---
-    (function prePlaceTopLeft() {
-        const piece1 = pieces.find(p => p.dataset.pieceNumber === '1');
-        if (!piece1) return;
-
-    // Remove from side area if there
-        if (piece1.parentElement) piece1.parentElement.removeChild(piece1);
-
-        const pos = correctPositions[1];
-        piece1.style.position = 'absolute';
-        piece1.style.left = pos.x + 'px';
-        piece1.style.top  = pos.y + 'px';
-        piece1.style.width  = pieceWidth + 'px';
-        piece1.style.height = pieceHeight + 'px';
-        piece1.style.border = 'none';
-        piece1.style.borderRadius = '0';
-        piece1.classList.add('placed');
-        piece1.dataset.isPlaced = 'true';
-
-        puzzleContainer.appendChild(piece1);
-        placedPieces[1] = true;
-    })();
-
     // Shuffle pieces and distribute to left and right areas
     pieces.sort(function() { return Math.random() - 0.5; });
     pieces.forEach(function(piece, index) {
