@@ -1003,3 +1003,37 @@ th {
   text-align: left;
 }
 
+/* === Did‑you‑know layout tweaks: smaller mascot, bigger boxes (all DYk screens) === */
+
+/* Make the whole strip wider so the boxes can grow */
+.info-box-container {
+  max-width: 1100px;      /* was 900px */
+  gap: 2.5rem;            /* a little more breathing room between columns */
+}
+
+/* Only shrink the mascot inside info sections */
+.info-box-container .character-container {
+  flex: 0 0 160px;        /* fixed narrow column for the mascot */
+  align-items: center;
+}
+.info-box-container .character-img {
+  max-width: 160px;       /* was 250px */
+}
+
+/* Let both info boxes take up more width */
+.info-box {
+  flex: 1 1 520px;        /* grow to fill space; comfortable min width per box */
+}
+
+/* Optional: tighten text a touch for readability at larger widths */
+.info-box p, .info-box ul {
+  line-height: 1.75;
+}
+
+/* Keep stacking nicely on mobile (inherits your existing column layout) */
+@media (max-width: 1200px) {
+  .info-box-container {
+    max-width: 100%;
+  }
+}
+
