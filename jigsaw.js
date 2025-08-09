@@ -118,6 +118,42 @@ function initializePuzzle() {
         } else {
             rightPiecesArea.appendChild(piece);
         }
+
+        // --- Pre-place the top-left piece (piece #1) inside the board ---
+    (function prePlaceTopLeft() {
+      // 1) Find piece #1 (your tiles are numbered 1..9)
+      const piece1 = pieces.find(p => p.dataset.pieceNumber === '1');
+      if (!piece1) return;
+    
+      // 2) Remove it from the side tray (if it was appended there)
+      if (piece1.parentElement) piece1.parentElement.removeChild(piece1);
+    
+      // 3) Absolutely place it at the board origin (0,0)
+      //    IMPORTANT: #puzzle-container must be position: relative (it already is in your CSS)
+      piece1.style.position = 'absolute';
+      piece1.style.left = '0px';
+      piece1.style.top  = '0px';
+    
+      // Keep size consistent with other snapped tiles
+      piece1.style.width  = pieceWidth + 'px';
+      piece1.style.height = pieceHeight + 'px';
+    
+      // Mark as placed/locked (matches your snap style)
+      piece1.style.border = 'none';
+      piece1.style.borderRadius = '0';
+      piece1.classList.add('placed');
+      piece1.dataset.isPlaced = 'true';
+      piece1.style.pointerEvents = 'none'; // make sure it can’t be dragged
+    
+      // 4) Add to the puzzle board and mark state
+      puzzleContainer.appendChild(piece1);
+      placedPieces[1] = true;  // top-left tile is done
+    
+      // (Optional) brief glow to cue “start here”
+      piece1.style.boxShadow = '0 0 20px rgba(255,215,0,0.7)';
+      setTimeout(() => { piece1.style.boxShadow = 'none'; }, 900);
+    })();
+
     });
 
     // Drag functionality
