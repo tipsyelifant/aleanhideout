@@ -320,6 +320,7 @@ h2 {
 #dialogue-box {
     max-width: 500px;
     line-height: 1.6;
+    text-align: left;
 }
 
 #dialogue-box p {
