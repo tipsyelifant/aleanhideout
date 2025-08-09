@@ -989,3 +989,17 @@ th {
         min-height: 34px;
     }
 }
+
+/* === Storyline text alignment override === */
+#dialogue-box,
+.dialogue-text,
+.speech-bubble,
+.speech-bubble p {
+  text-align: left;
+}
+
+#dialogue-box h2,
+.dialogue-text h2 {
+  text-align: left;
+}
+
