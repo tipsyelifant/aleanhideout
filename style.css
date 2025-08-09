@@ -1003,37 +1003,38 @@ th {
   text-align: left;
 }
 
-/* === Did‑you‑know layout tweaks: smaller mascot, bigger boxes (all DYk screens) === */
-
-/* Make the whole strip wider so the boxes can grow */
+/* === Keep mascot + two boxes side-by-side on DYk screens === */
 .info-box-container {
-  max-width: 1100px;      /* was 900px */
-  gap: 2.5rem;            /* a little more breathing room between columns */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;         /* prevent stacking */
+  align-items: flex-start;
+  justify-content: center;   /* center within container */
+  max-width: 1100px;         /* wider to fit mascot + 2 boxes */
+  gap: 1.5rem;
 }
 
-/* Only shrink the mascot inside info sections */
-.info-box-container .character-container {
-  flex: 0 0 160px;        /* fixed narrow column for the mascot */
-  align-items: center;
-}
+/* Smaller mascot */
 .info-box-container .character-img {
-  max-width: 160px;       /* was 250px */
+  max-width: 140px;
+  height: auto;
 }
 
-/* Let both info boxes take up more width */
+/* Let the two boxes share the remaining space */
 .info-box {
-  flex: 1 1 520px;        /* grow to fill space; comfortable min width per box */
+  flex: 1 1 0;
 }
 
-/* Optional: tighten text a touch for readability at larger widths */
-.info-box p, .info-box ul {
-  line-height: 1.75;
-}
-
-/* Keep stacking nicely on mobile (inherits your existing column layout) */
-@media (max-width: 1200px) {
+/* Override mobile rule — only stack if screen is really small */
+@media (max-width: 700px) {
   .info-box-container {
-    max-width: 100%;
+    flex-wrap: wrap;
+  }
+  .info-box {
+    flex: 1 1 100%;
+  }
+}
+
   }
 }
 
