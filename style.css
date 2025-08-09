@@ -686,6 +686,7 @@ h2 {
     width: 100%;
     max-width: 900px;
     justify-self: center;
+    margin-left: -30%;
 }
 
 .info-box {
