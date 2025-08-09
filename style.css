@@ -1038,3 +1038,24 @@ th {
   }
 }
 
+/* Center the mascot + two info boxes together */
+.info-box-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;  /* centers the whole group horizontally */
+  gap: 1.5rem;
+  max-width: 1200px;        /* adjust to fit your desired width */
+  margin: 0 auto;           /* center within the page */
+}
+
+/* Reduce mascot size */
+.info-box-container .character-img {
+  max-width: 140px;
+  height: auto;
+}
+
+/* Allow both info boxes to fill remaining space evenly */
+.info-box {
+  flex: 1 1 0;
+}
