@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             //     document.getElementById('puzzle-4-did-you-know-screen').style.display = 'flex';
             // }, 1000);
             document.getElementById('puzzle-4-did-you-know-screen').style.display = 'flex';
+            document.getElementById('puzzle-4-screen').style.display = 'none';
         } else {
             feedback.textContent = 'Incorrect, please try again';
             feedback.style.color = 'red';
