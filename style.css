@@ -98,7 +98,7 @@ h2 {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    width: max-content;
+    width: auto;
     gap: 20px;
     justify-self: center;
 }
@@ -673,7 +673,7 @@ h2 {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    width: max-content;
+    width: auto;
     gap: 20px;
     justify-self: center;
 }
@@ -689,7 +689,7 @@ h2 {
     justify-content: space-between;
     gap: 2rem;
     flex-wrap: wrap;
-    width: 100%;
+    /* width: 100%; */
     /* max-width: auto; */
     justify-self: center;
     /* margin-left: -30%; */
