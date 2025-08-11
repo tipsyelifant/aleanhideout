@@ -690,9 +690,9 @@ h2 {
     gap: 2rem;
     flex-wrap: wrap;
     width: 100%;
-    max-width: 900px;
+    /* max-width: auto; */
     justify-self: center;
-    margin-left: -30%;
+    /* margin-left: -30%; */
 }
 
 .info-box {
@@ -1017,7 +1017,7 @@ th {
   flex-wrap: nowrap;         /* prevent stacking */
   align-items: flex-start;
   justify-content: center;   /* center within container */
-  max-width: 1100px;         /* wider to fit mascot + 2 boxes */
+  max-width: auto;         /* wider to fit mascot + 2 boxes */
   gap: 1.5rem;
 }
 
