@@ -65,13 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     submitBtn.addEventListener('click', () => {
         if (answerInput.value.trim().toUpperCase() === 'WASTE') {
-            feedback.textContent = 'Correct!';
-            feedback.style.color = 'green';
-            feedback.style.display = 'block';
-            setTimeout(() => {
-                puzzle4Screen.style.display = 'none';
-                document.getElementById('puzzle-4-did-you-know-screen').style.display = 'flex';
-            }, 1000);
+            // feedback.textContent = 'Correct!';
+            // feedback.style.color = 'green';
+            // feedback.style.display = 'block';
+            // setTimeout(() => {
+            //     puzzle4Screen.style.display = 'none';
+            //     document.getElementById('puzzle-4-did-you-know-screen').style.display = 'flex';
+            // }, 1000);
+            document.getElementById('puzzle-4-did-you-know-screen').style.display = 'flex';
         } else {
             feedback.textContent = 'Incorrect, please try again';
             feedback.style.color = 'red';

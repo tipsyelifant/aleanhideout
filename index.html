@@ -180,6 +180,7 @@
                     <p>She rewinds the security footage.<br>“Watch the yellow chef from start to end. Steamboat orders should <em>flow</em>, not clog.”</p>
                     <p>“But my stopwatch is locked in the <em>mystery drawer</em> — and it needs an <strong>8-letter code</strong> to open.”</p>
                     <p>🔍 Follow the kitchen steps and uncover the word!</p>
+                    <p><span style="color: #ffd966">Watch the yellow chef from start to end.</span></p>
                     <p class="flow-sequence">
                         <span style="color: #ffd966">Read Order → Take Ingredients → Chop Ingredients → Put in Steamboat → Wait → Plate it → Serve it → Wash Plate</span>
                     </p>
@@ -197,6 +198,7 @@
                 <source src="videos/puzzle2.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+            <h3><span style="color: #ffd966">Watch the yellow chef from start to end.</span></h3>
             <h3><span style="color: #ffd966">Read Order → Take Ingredients → Chop Ingredients → Put in Steamboat → Wait → Plate it → Serve it → Wash Plate</span></h3>
             <h3>What is the 8-letter code? (no space)</h3>
             <div id="puzzle-2-answer-container">
@@ -267,7 +269,7 @@
                 <div class="dialogue-text">
                     <h2>Heidi glances at her messy notes.</h2>
                     <p>“Ugh, my stopwatch log got smudged! I only remember bits — some are numbers, others are symbols I scribbled down in a rush.”</p>
-                    <p>“Each symbol has a value. You’ll need to figure them out and calculate the <strong>Lead Time</strong> for <strong>Take Ingredients</strong>.”</p>
+                    <p>“Each symbol has a value. You’ll need to figure them out and calculate the <strong>Lead Time</strong> for <strong>Chop Ingredients</strong>.”</p>
                     <p>Can you help her crack the code?</p>
                 </div>
             </div>
@@ -345,11 +347,12 @@
                         <h4>Heidi's Clues</h4>
                         <p>📝 1. Chop + Serve = Take + Read</p>
                         <p>📝 2. Put in Steamboat + Wait = 24 minutes</p>
+                        <p>📝 Process Time + Wait Time = Lead Time</p>
                     </div>
                 </div>
             </div>
             <div class="puzzle-prompt">
-                <h3>What is the Lead Time for “Take Ingredients”?</h3>
+                <h3>What is the Lead Time for Chop Ingredients”?</h3>
                 <input type="text" id="puzzle-3-answer" placeholder="Enter your answer">
                 <button id="submit-puzzle-3-answer-btn" class="btn">Submit</button>
                 <p id="puzzle-3-error-message" style="color: red; display: none;">Incorrect. Please try again.</p>
@@ -360,25 +363,27 @@
                     <div class="hint-box">
                         <div class="hint-title">▸ Clue 1</div>
                         <div class="hint-content">
-                            <p>Each symbol stands for a unique number between 5 and 15 minutes.</p>
+                            <p>◆ + 1= 12</p>
+                            <!-- <p>Each symbol stands for a unique number between 5 and 15 minutes.</p>
                             <p>You’ll need to decode them to reveal the true Lead Time.</p>
-                            <p>Try comparing the total times between rows — the clues are hidden in plain sight...</p>
+                            <p>Try comparing the total times between rows — the clues are hidden in plain sight...</p> -->
                         </div>
                     </div>
                     <div class="hint-box">
                         <div class="hint-title">▸ Clue 2</div>
                         <div class="hint-content">
-                            <p>Ready to narrow it down?</p>
+                            <p>▲+ 5 +3 + ▲ = 3 + ◆ + 2+ ▲</p>
+                            <!-- <p>Ready to narrow it down?</p>
                             <p>▲ = 8</p>
                             <p>◆ = 11</p>
                             <p>● = 10</p>
-                            <p>Now go back, fill them in, and sum up (Process + Wait) for all steps to unlock the total Lead Time.</p>
+                            <p>Now go back, fill them in, and sum up (Process + Wait) for all steps to unlock the total Lead Time.</p> -->
                         </div>
                     </div>
                     <div class="hint-box">
                         <div class="hint-title">▸ Answer</div>
                         <div class="hint-content">
-                            <p>Total Lead Time for “Take Ingredients” = 14</p>
+                            <p>Total Lead Time for “Chop Ingredients” = 13</p>
                         </div>
                     </div>
                 </div>
@@ -400,7 +405,13 @@
                 </div>
                 <div class="info-box">
                     <h3>Try this at work!</h3>
-                    <p>Want to discover where time really goes in your work? Try tracking three simple times: how long customers wait in total (Lead Time), how long the actual work takes (Process Time), and how long things sit waiting (Wait Time). Pick one process and time these for just five orders. You'll be surprised to find how much time is spent waiting versus doing actual work!</p>
+                    <p>Want to discover where time really goes in your work? Try tracking three simple times:</p>
+                    <ol>
+                        <li>How long customers wait in total (Lead Time)</li>
+                        <li>How long the actual work takes (Process Time)</li>
+                        <li>How long things sit waiting (Wait Time)</li>
+                        <li>Pick one process and time these for just five orders. You'll be surprised to find how much time is spent waiting versus doing actual work!</li>
+                    </ol>
                 </div>
             </div>
             <div class="button-group">
@@ -492,7 +503,7 @@
                 <input type="text" id="puzzle-4-answer" placeholder="Enter 5-letter code" maxlength="5">
                 <button id="submit-puzzle-4-answer-btn" class="btn">Submit</button>
             </div>
-            <p id="puzzle-4-feedback" style="display: none;"></p>
+            <!-- <p id="puzzle-4-feedback" style="display: none;"></p> -->
             <div class="clue-section">
                 <img src="images/clue buddy.png" alt="Clue Buddy" class="clue-buddy">
                 <div id="hint-container">
