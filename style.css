@@ -9,7 +9,7 @@ body {
 
 @font-face {
     font-family: "Chalkduster.ttf";
-    src: url(./font/Chalkduster.ttf);
+    src: url("./font/Chalkduster.ttf");
 }
 
 h2 {
