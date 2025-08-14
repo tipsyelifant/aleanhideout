@@ -119,13 +119,13 @@ document.addEventListener('DOMContentLoaded', () => {
       // Puzzle 2 Did You Know → VSM screen
     document.getElementById('puzzle-2-did-you-know-next-btn').addEventListener('click', function () {
         document.getElementById('puzzle-2-did-you-know-screen').style.display = 'none';
-        document.getElementById('puzzle-2-vsm-screen').style.display = 'flex';
+        document.getElementById('puzzle-2-vsm-screen').style.display = 'block';
     });
     
     // Puzzle 2 VSM Back → Puzzle 2 Did You Know
     document.getElementById('puzzle-2-vsm-back-btn').addEventListener('click', function () {
         document.getElementById('puzzle-2-vsm-screen').style.display = 'none';
-        document.getElementById('puzzle-2-did-you-know-screen').style.display = 'flex';
+        document.getElementById('puzzle-2-did-you-know-screen').style.display = 'block';
     });
     
     // Puzzle 2 VSM Next → Puzzle 3 Story
