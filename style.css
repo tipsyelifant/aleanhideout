@@ -1087,7 +1087,7 @@ th {
   text-align: center;
 }
 
-.puzzle-2-vsm-screen {
+#puzzle-2-vsm-screen {
   display: flex;
   flex-direction: row;
   align-items: center;
