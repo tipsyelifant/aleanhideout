@@ -119,19 +119,19 @@ document.addEventListener('DOMContentLoaded', () => {
       // Puzzle 2 Did You Know → VSM screen
     document.getElementById('puzzle-2-did-you-know-next-btn').addEventListener('click', function () {
         document.getElementById('puzzle-2-did-you-know-screen').style.display = 'none';
-        document.getElementById('puzzle-2-vsm-screen').style.display = 'block';
+        document.getElementById('puzzle-2-vsm-screen').style.display = 'flex';
     });
     
     // Puzzle 2 VSM Back → Puzzle 2 Did You Know
     document.getElementById('puzzle-2-vsm-back-btn').addEventListener('click', function () {
         document.getElementById('puzzle-2-vsm-screen').style.display = 'none';
-        document.getElementById('puzzle-2-did-you-know-screen').style.display = 'block';
+        document.getElementById('puzzle-2-did-you-know-screen').style.display = 'flex';
     });
     
     // Puzzle 2 VSM Next → Puzzle 3 Story
     document.getElementById('puzzle-2-vsm-next-btn').addEventListener('click', function () {
         document.getElementById('puzzle-2-vsm-screen').style.display = 'none';
-        document.getElementById('puzzle-3-intro-screen').style.display = 'block';
+        document.getElementById('puzzle-3-intro-screen').style.display = 'flex';
     });
 
     document.getElementById('puzzle-3-intro-back-btn').addEventListener('click', () => {
