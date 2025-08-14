@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Puzzle 2 VSM Next → Puzzle 3 Story
     document.getElementById('puzzle-2-vsm-next-btn').addEventListener('click', function () {
         document.getElementById('puzzle-2-vsm-screen').style.display = 'none';
-        document.getElementById('puzzle-3-story-screen').style.display = 'block';
+        document.getElementById('puzzle-3-intro-screen').style.display = 'block';
     });
 
     document.getElementById('puzzle-3-intro-back-btn').addEventListener('click', () => {
