@@ -1064,3 +1064,25 @@ th {
   flex: 1 1 0;
 }
 
+.vsm-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  max-width: 1000px;
+}
+
+.vsm-illustration {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  border: 2px solid rgba(255,255,255,0.5);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.vsm-caption {
+  font-size: 14px;
+  margin-top: 8px;
+  opacity: 0.85;
+  text-align: center;
+}
