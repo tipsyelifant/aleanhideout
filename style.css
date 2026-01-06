@@ -2,6 +2,11 @@ body {
     font-family: sans-serif;
     text-align: center;
     background-color: #f0f0f0;
+
+    margin: 0;                /* Removes the default white border around the page */
+    padding: 0;               /* Ensures no extra internal spacing */
+    width: 100vw;             /* Forces body to take full viewport width */
+    overflow-x: hidden;       /* Prevents horizontal scrolling/white space if an element is too wide */
 }
 
 #game-container {
