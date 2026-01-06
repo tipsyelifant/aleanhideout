@@ -1,10 +1,12 @@
-body {
-    margin: 0;                /* Removes the default white border */
-    padding: 0;               /* Removes internal spacing */
-    width: 100vw;             /* Forces the body to match the viewport width exactly */
-    overflow-x: hidden;       /* Hides any element that sticks out to the right */
-    min-height: 100vh;        /* Ensures background covers vertical height even if content is short */
-    
+html, body {
+    width: 100%;          /* Use 100% instead of 100vw to avoid scrollbar glitches */
+    max-width: 100%;      /* Ensure it never exceeds screen width */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;   /* Strict command to cut off side-scrolling */
+}
+
+body { 
     font-family: sans-serif;
     text-align: center;
     background: url('images/chalk background.jpg') no-repeat center center fixed;
