@@ -1,4 +1,10 @@
 body {
+    margin: 0;                /* Removes the default white border */
+    padding: 0;               /* Removes internal spacing */
+    width: 100vw;             /* Forces the body to match the viewport width exactly */
+    overflow-x: hidden;       /* Hides any element that sticks out to the right */
+    min-height: 100vh;        /* Ensures background covers vertical height even if content is short */
+    
     font-family: sans-serif;
     text-align: center;
     background: url('images/chalk background.jpg') no-repeat center center fixed;
