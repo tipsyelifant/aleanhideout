@@ -9,91 +9,204 @@ document.addEventListener('DOMContentLoaded', () => {
     const dialogueText = document.getElementById('dialogue-text');
     const nextDialogueBtn = document.getElementById('next-dialogue-btn');
 
-    const CORRECT_CODE = "GEMBA"; // Dummy code for now
-
-    const story = [
-        { character: "heidi", text: "Welcome to the kitchen! It's a mess, isn't it?" },
-        { character: "heidi", text: "The customers are angry because their orders are taking too long." },
-        { character: "heidi", text: "I need your help to sort this out. Let's start by looking at this photo..." }
-    ];
-    let currentDialogue = 0;
+    const CORRECT_CODE = "aleanhideout!";
 
     startBtn.addEventListener('click', () => {
         startScreen.style.display = 'none';
-        registrationGate.style.display = 'block';
+        registrationGate.style.display = 'flex';
     });
 
     submitCodeBtn.addEventListener('click', () => {
-        if (verificationCodeInput.value.toUpperCase() === CORRECT_CODE) {
+        if (verificationCodeInput.value.trim().toLowerCase() === CORRECT_CODE) {
             registrationGate.style.display = 'none';
-            storyScreen.style.display = 'block';
-            showDialogue();
+            storyScreen.style.display = 'flex';
         } else {
             errorMessage.style.display = 'block';
         }
     });
 
     nextDialogueBtn.addEventListener('click', () => {
-        currentDialogue++;
-        if (currentDialogue < story.length) {
-            showDialogue();
-        } else {
-            storyScreen.style.display = 'none';
-            document.getElementById('puzzle-screen').style.display = 'block';
-            initializePuzzle();
+        storyScreen.style.display = 'none';
+        document.getElementById('angry-customer-screen').style.display = 'flex';
+    });
+
+    document.getElementById('customer-scene-next-btn').addEventListener('click', () => {
+        document.getElementById('angry-customer-screen').style.display = 'none';
+        document.getElementById('dialogue-puzzle-intro-screen').style.display = 'flex';
+    });
+
+    // FIXED: Single unlock-kit-btn listener with puzzle initialization
+    document.getElementById('unlock-kit-btn').addEventListener('click', () => {
+        document.getElementById('dialogue-puzzle-intro-screen').style.display = 'none';
+        document.getElementById('ingredient-puzzle-screen').style.display = 'block';
+        
+        // Initialize the puzzle when screen becomes visible
+        if (window.initializePuzzle) {
+            window.initializePuzzle();
         }
     });
 
-    function showDialogue() {
-        dialogueText.textContent = story[currentDialogue].text;
-        // document.getElementById('character-illustration').src = `images/${story[currentDialogue].character}.png`;
-    }
+    document.getElementById('customer-scene-back-btn').addEventListener('click', () => {
+        document.getElementById('angry-customer-screen').style.display = 'none';
+        storyScreen.style.display = 'flex';
+    });
 
-    function initializePuzzle() {
-        const puzzle = new Puzzle(
-            'puzzle-container',
-            'https://picsum.photos/800/600', // Placeholder image
-            {
-                rows: 3,
-                cols: 3,
-                onComplete: () => {
-                    document.getElementById('next-puzzle-btn').disabled = false;
-                }
-            }
-        );
-    }
-
-    document.getElementById('next-puzzle-btn').addEventListener('click', () => {
-        document.getElementById('puzzle-screen').style.display = 'none';
-        document.getElementById('ingredient-puzzle-screen').style.display = 'block';
+    document.getElementById('puzzle-intro-back-btn').addEventListener('click', () => {
+        document.getElementById('dialogue-puzzle-intro-screen').style.display = 'none';
+        document.getElementById('angry-customer-screen').style.display = 'flex';
     });
 
     document.getElementById('submit-ingredient-answer-btn').addEventListener('click', () => {
         const answer = document.getElementById('ingredient-answer').value.toUpperCase();
         if (answer === 'GEMBA') {
             document.getElementById('ingredient-puzzle-screen').style.display = 'none';
-            document.getElementById('answer-reveal-screen').style.display = 'block';
+            const didYouKnowScreen = document.getElementById('did-you-know-screen');
+            didYouKnowScreen.style.display = 'flex';
+
+            const backBtn = document.getElementById('did-you-know-back-btn');
+            const nextBtn = document.getElementById('did-you-know-next-btn');
+
         } else {
             document.getElementById('ingredient-error-message').style.display = 'block';
         }
     });
 
-    document.getElementById('reflection-btn').addEventListener('click', () => {
-        document.getElementById('answer-reveal-screen').style.display = 'none';
-        document.getElementById('reflection-screen').style.display = 'block';
+    document.getElementById('ingredient-puzzle-back-btn').addEventListener('click', () => {
+        document.getElementById('ingredient-puzzle-screen').style.display = 'none';
+        document.getElementById('dialogue-puzzle-intro-screen').style.display = 'flex';
     });
 
-    document.getElementById('finish-btn').addEventListener('click', () => {
-        // End of the game
-        console.log("Game finished!");
-        document.getElementById('reflection-screen').style.display = 'none';
-        document.getElementById('start-screen').style.display = 'block';
+    document.getElementById('did-you-know-back-btn').addEventListener('click', () => {
+        document.getElementById('did-you-know-screen').style.display = 'none';
+        document.getElementById('ingredient-puzzle-screen').style.display = 'block';
+    });
+
+    document.getElementById('did-you-know-next-btn').addEventListener('click', () => {
+        document.getElementById('did-you-know-screen').style.display = 'none';
+        document.getElementById('puzzle-2-intro-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-2-intro-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-2-intro-screen').style.display = 'none';
+        document.getElementById('did-you-know-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-2-intro-next-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-2-intro-screen').style.display = 'none';
+        document.getElementById('puzzle-2-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-2-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-2-screen').style.display = 'none';
+        document.getElementById('puzzle-2-intro-screen').style.display = 'flex';
+    });
+
+    document.getElementById('submit-puzzle-2-answer-btn').addEventListener('click', () => {
+        const answer = document.getElementById('puzzle-2-answer').value.toUpperCase();
+        if (answer === 'VALUEADD') {
+            document.getElementById('puzzle-2-screen').style.display = 'none';
+            document.getElementById('puzzle-2-did-you-know-screen').style.display = 'flex';
+        } else {
+            document.getElementById('puzzle-2-error-message').style.display = 'block';
+        }
+    });
+
+    document.getElementById('puzzle-2-did-you-know-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-2-did-you-know-screen').style.display = 'none';
+        document.getElementById('puzzle-2-screen').style.display = 'flex';
+    });
+
+      // Puzzle 2 Did You Know → VSM screen
+    document.getElementById('puzzle-2-did-you-know-next-btn').addEventListener('click', function () {
+        document.getElementById('puzzle-2-did-you-know-screen').style.display = 'none';
+        document.getElementById('puzzle-2-vsm-screen').style.display = 'flex';
+    });
+    
+    // Puzzle 2 VSM Back → Puzzle 2 Did You Know
+    document.getElementById('puzzle-2-vsm-back-btn').addEventListener('click', function () {
+        document.getElementById('puzzle-2-vsm-screen').style.display = 'none';
+        document.getElementById('puzzle-2-did-you-know-screen').style.display = 'flex';
+    });
+    
+    // Puzzle 2 VSM Next → Puzzle 3 Story
+    document.getElementById('puzzle-2-vsm-next-btn').addEventListener('click', function () {
+        document.getElementById('puzzle-2-vsm-screen').style.display = 'none';
+        document.getElementById('puzzle-3-intro-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-3-intro-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-3-intro-screen').style.display = 'none';
+        document.getElementById('puzzle-2-vsm-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-3-intro-next-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-3-intro-screen').style.display = 'none';
+        document.getElementById('puzzle-3-main-screen').style.display = 'flex';
     });
 
     const hintTitles = document.querySelectorAll('.hint-title');
     hintTitles.forEach(title => {
         title.addEventListener('click', () => {
-            title.nextElementSibling.style.display = title.nextElementSibling.style.display === 'block' ? 'none' : 'block';
+            const content = title.nextElementSibling;
+            const isVisible = content.style.display === 'block';
+
+            // Close all hint contents
+            hintTitles.forEach(otherTitle => {
+                otherTitle.nextElementSibling.style.display = 'none';
+            });
+
+            // Toggle the clicked one
+            content.style.display = isVisible ? 'none' : 'block';
         });
+    });
+
+    document.getElementById('submit-puzzle-3-answer-btn').addEventListener('click', () => {
+        const answer = document.getElementById('puzzle-3-answer').value;
+        if (answer === '13') {
+            document.getElementById('puzzle-3-main-screen').style.display = 'none';
+            document.getElementById('puzzle-3-did-you-know-screen').style.display = 'flex';
+        } else {
+            document.getElementById('puzzle-3-error-message').style.display = 'block';
+        }
+    });
+
+    document.getElementById('puzzle-3-back-btn').addEventListener('click', () => {
+            document.getElementById('puzzle-3-main-screen').style.display = 'none';
+            document.getElementById('puzzle-3-intro-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-3-did-you-know-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-3-did-you-know-screen').style.display = 'none';
+        document.getElementById('puzzle-3-main-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-3-did-you-know-next-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-3-did-you-know-screen').style.display = 'none';
+        document.getElementById('puzzle-4-intro-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-4-intro-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-4-intro-screen').style.display = 'none';
+        document.getElementById('puzzle-3-did-you-know-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-4-intro-next-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-4-intro-screen').style.display = 'none';
+        document.getElementById('puzzle-4-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-4-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-4-screen').style.display = 'none';
+        document.getElementById('puzzle-4-intro-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-4-did-you-know-back-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-4-did-you-know-screen').style.display = 'none';
+        document.getElementById('puzzle-4-screen').style.display = 'flex';
+    });
+
+    document.getElementById('puzzle-4-did-you-know-next-btn').addEventListener('click', () => {
+        document.getElementById('puzzle-4-did-you-know-screen').style.display = 'none';
+        document.getElementById('congratulations-screen').style.display = 'flex';
     });
 });

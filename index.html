@@ -10,85 +10,593 @@
 <body>
     <div id="game-container">
         <div id="start-screen">
-            <h1>A Lean Hideout</h1>
-            <h2>The Public Service Kind of Lean</h2>
             <div id="character-lineup">
-                <!-- Character images will go here -->
+                <img src="images/heidi happy.png" alt="Happy Heidi">
+                <img src="images/heidi camera.png" alt="Heidi with camera">
+                <img src="images/heidi stopwatch.png" alt="Heidi with stopwatch">
+                <img src="images/heidi brownpaper.png" alt="Heidi with brown paper">
+                <img src="images/heidi fishbone.png" alt="Heidi with fishbone diagram">
             </div>
-            <button id="start-btn">Enter the Hideout</button>
+            <img src="images/a lean hideout logo.png" alt="A Lean Hideout" id="main-logo">
+            <img src="images/subtitle logo.png" alt="A virtual puzzle quest about Lean" id="subtitle-logo">
+            <div id="game-description">
+                <p>Step into the chaos of a steamboat kitchen where nothing is ever quite in order — yet everything is a chance to learn.</p>
+                <p>This is an interactive virtual puzzle quest where you will discover how Lean Methodology can turn disorder into flow.</p>
+                <p>It’s fast. It’s fun. And it’s deliciously educational.</p>
+                <p>Can you uncover the secrets and escape before the broth boils over?</p>
+            </div>
+            <button id="start-btn" class="btn">Let's Start!</button>
         </div>
 
         <div id="registration-gate" style="display: none;">
-            <h2>Registration Gate</h2>
-            <p>Please fill out the FormSG and enter the verification code below.</p>
-            <a href="#" target="_blank">Link to FormSG</a>
-            <input type="text" id="verification-code" placeholder="Enter your code">
-            <button id="submit-code-btn">Enter the hideout now</button>
-            <p id="error-message" style="color: red; display: none;">Invalid code. Please try again.</p>
+            <h2>Before we begin...</h2>
+            <div id="instructions">
+                <p><strong>Important:</strong> Please complete the FormSG to ensure accurate data collection for the virtual puzzle quest. Please do not share your quiz password.</p>
+                <p><strong>Step 1:</strong> Click on the link and fill up the FormSG <a href="https://go.gov.sg/aleanhideout" target="_blank">https://go.gov.sg/aleanhideout</a></p>
+                <p><strong>Step 2:</strong> You will receive an email with the password after you have completed the FormSG</p>
+                <p><strong>Step 3:</strong> Enter the password from your email.</p>
+            </div>
+            <input type="text" id="verification-code" placeholder="Enter your password">
+            <button id="submit-code-btn" class="btn">Enter Lean Hideout</button>
+            <p id="error-message" style="color: red; display: none;">Oops! That code doesn’t look right. Please try again.</p>
         </div>
 
         <div id="story-screen" style="display: none;">
-            <img src="" alt="Character illustration" id="character-illustration">
+            <img src="images/heidi happy.png" alt="Heidi Lau" id="character-illustration">
             <div id="dialogue-box">
-                <p id="dialogue-text"></p>
-                <button id="next-dialogue-btn">Next</button>
+                <h2>Meet Heidi Lau</h2>
+                <p>This is Heidi Lau — the newest chef in the Lean Hideout Restaurant.</p>
+                <p>Bright-eyed and full of ideas, Heidi’s just stepped into the kitchen…<br>
+                <p>Only to find chaos on every counter — ingredients scattered, stoves misbehaving, chefs bumping into each other, and dishes taking forever to serve.</p>
+                <button id="next-dialogue-btn" class="btn">Next</button>
             </div>
         </div>
 
         <div id="puzzle-screen" style="display: none;">
             <h2>Reassemble the Photo</h2>
             <div id="puzzle-container"></div>
-            <button id="next-puzzle-btn" disabled>Next</button>
+            <button id="next-puzzle-btn" class="btn" disabled>Next</button>
+        </div>
+
+        <div id="angry-customer-screen" style="display: none;">
+            <div class="customer-row">
+                <div class="customer-group">
+                    <img src="images/angry customer.png" alt="Angry Customer" class="customer-img">
+                </div>
+                <div class="speech-bubble">
+                    <p>“How much longer do they expect me to wait?!”</p>
+                </div>
+            </div>
+            <div class="customer-row">
+                <div class="speech-bubble">
+                    <p>“Ugh, this Lean Hideout restaurant is taking forever! I don’t care how tasty the food is — they seriously need to get their act together!”</p>
+                </div>
+                <div class="customer-group">
+                    <img src="images/angry customer.png" alt="Angry Customer" class="customer-img">
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="customer-scene-back-btn" class="btn btn-gray">Back</button>
+                <button id="customer-scene-next-btn" class="btn">Next</button>
+            </div>
+        </div>
+
+        <div id="dialogue-puzzle-intro-screen" style="display: none;">
+            <div class="character-dialogue">
+                <div class="character-container">
+                    <img src="images/heidi camera.png" alt="Heidi with camera" class="character-img">
+                </div>
+                <div class="dialogue-text">
+                    <h2>“Something’s off…”</h2>
+                    <p>"We need to fix this. Step by step,” says Heidi as she snaps a photo with her Lean Analysis camera:</p>
+                    <p><em>Snap! *Beep! Beep! Zap*</em></p>
+                    <p>“Oh no — the camera malfunctioned and the picture's ruined!" The answer to this disorder still lies in the picture and Heidi will need your help to piece it back together.</p>
+                    <p>Once the picture forms, observe the ingredients starting from the <strong>top left and go anti-clockwise.</strong> Each ingredient's count and spelling holds a clue.</p>
+                    <p>Discover a the <stong>5-letter code</strong> hidden to proceed!</p>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="puzzle-intro-back-btn" class="btn btn-gray">Back</button>
+                <button id="unlock-kit-btn" class="btn">Next</button>
+            </div>
         </div>
 
         <div id="ingredient-puzzle-screen" style="display: none;">
-            <h2>What is the 5-letter word?</h2>
-            <div id="ingredients-container">
-                <!-- Ingredient icons will go here -->
+            <h2>Puzzle 1/4</h2>
+            <p>Drag the pieces to the correct location to form a complete picture</p>
+            <div id="puzzle-container" style="background-image: url('images/jigsaw-3.svg');"></div>
+            <h3>What is the 5-letter code?</h3>
+            <p>Remember... Start from the top left and go anti-clockwise...</p>
+            <div id="ingredient-answer-container">
+                <input type="text" id="ingredient-answer" placeholder="Enter the 5-letter code">
+                <button id="submit-ingredient-answer-btn" class="btn">Submit</button>
             </div>
-            <p>Count the number of each ingredient. Use that number to find the corresponding letter in the ingredient name.</p>
-            <div id="hint-container">
-                <div class="hint-box">
-                    <div class="hint-title">HINT 1</div>
-                    <div class="hint-content">
-                        <p>There are 5 types of ingredients: vegetable, meat, seafood, noodle, and corn.</p>
-                    </div>
-                </div>
-                <div class="hint-box">
-                    <div class="hint-title">HINT 2</div>
-                    <div class="hint-content">
-                        <p>The first letter comes from 'Vegetable'.</p>
-                    </div>
-                </div>
-                <div class="hint-box">
-                    <div class="hint-title">ANSWER</div>
-                    <div class="hint-content">
-                        <p>GEMBA</p>
-                    </div>
-                </div>
-            </div>
-            <input type="text" id="ingredient-answer" placeholder="Enter the 5-letter word">
-            <button id="submit-ingredient-answer-btn">Submit</button>
             <p id="ingredient-error-message" style="color: red; display: none;">Incorrect. Please try again.</p>
+            <div class="clue-section">
+                <img src="images/clue buddy.png" alt="Clue Buddy" class="clue-buddy">
+                <div id="hint-container">
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Clue 1</div>
+                        <div class="hint-content">
+                            <p>Try starting from the top-left vegetable pile and make your way anti-clockwise around the kitchen. Keep an eye on how many of each ingredient you pass — maybe they’re hiding letters?</p>
+                        </div>
+                    </div>
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Clue 2</div>
+                        <div class="hint-content">
+                            <p>Each ingredient name holds a clue. Count how many of each type you see, and take that letter from the ingredient name. For example: 3 vegetables? That’s the 3rd letter in “Vegetable”, which is G. Keep going anti-clockwise to find the 5-letter code!</p>
+                        </div>
+                    </div>
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Answer</div>
+                        <div class="hint-content">
+                            <p>gemba</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="ingredient-puzzle-back-btn" class="btn btn-gray">Back</button>
+            </div>
         </div>
 
-        <div id="answer-reveal-screen" style="display: none;">
-            <h2>Congratulations! The answer is GEMBA.</h2>
-            <p>GEMBA is a Japanese term that means "the real place." In Lean, it refers to the practice of going to the actual place where work is done to see the process, understand the work, and identify opportunities for improvement.</p>
-            <button id="reflection-btn">Continue</button>
+        <div id="did-you-know-screen" style="display: none;">
+            <div class="info-box-container">
+                <div class="character-container">
+                    <img src="images/lean professor.png" alt="Lean Professor" class="character-img">
+                </div>
+                <div class="info-box">
+                    <h3>Did you know?</h3>
+                    <p><strong>Gemba</strong> means “the real place” — where the work actually happens.</p>
+                    <p>A <strong>Gemba Walk</strong> is going to the actual workplace to observe processes firsthand.</p>
+                    <p>It provides real understanding of processes and reveals actual problems vs reported problems.</p>
+                    <!-- <p>It is important for Heidi to do a Gemba walk to be back at the kitchen to understand the current state before diving into any solution. </p> -->
+                </div>
+                <div class="info-box">
+                    <h3>Try this at work!</h3>
+                    <p>Boost your workplace understanding with a quick Gemba walk.</p>
+                    <p>Take 15 minutes to observe where work happens:</p>
+                    <ul>
+                        <li>Watch quietly</li>
+                        <li>Ask your team about their challenges</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="did-you-know-back-btn" class="btn btn-gray">Back</button>
+                <button id="did-you-know-next-btn" class="btn">Next</button>
+            </div>
         </div>
 
-        <div id="reflection-screen" style="display: none;">
-            <h2>How can you apply GEMBA in your work?</h2>
-            <ul>
-                <li>Visit the frontlines to understand the challenges your colleagues face.</li>
-                <li>Shadow a colleague for a day to see their work from their perspective.</li>
-                <li>Talk to customers to get their feedback on your services.</li>
-            </ul>
-            <button id="finish-btn">Finish</button>
+        <div id="puzzle-2-intro-screen" style="display: none;">
+            <div class="character-dialogue">
+                <div class="character-container">
+                    <img src="images/heidi brownpaper.png" alt="Heidi with brown paper" class="character-img">
+                </div>
+                <div class="dialogue-text">
+                    <h2>Heidi's Observation</h2>
+                    <p>The next morning, Heidi’s back with brown paper, markers… and questions.</p>
+                    <p>“Let’s trace the real <strong>flow</strong> — where time’s spent, and where things jam up.”</p>
+                    <p>She rewinds the security footage.<br><span style="color: #ffd966">“Watch the yellow chef from start to end.</span> Steamboat orders should <em>flow</em>, not clog.”</p>
+                    <p>“But my stopwatch is locked in the <em>mystery drawer</em> — and it needs an <strong>8-letter code</strong> to open.”</p>
+                    <p>🔍 Follow the kitchen steps and uncover the word!</p>
+                    <p class="flow-sequence">
+                        <span style="color: #ffd966">Read Order → Take Ingredients → Chop Ingredients → Put in Steamboat → Wait → Plate it → Serve it → Wash Plate</span>
+                    </p>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="puzzle-2-intro-back-btn" class="btn btn-gray">Back</button>
+                <button id="puzzle-2-intro-next-btn" class="btn">Next</button>
+            </div>
+        </div>
+
+        <div id="puzzle-2-screen" style="display: none;">
+            <h2>Puzzle 2/4</h2>
+            <video id="puzzle-2-video" width="100%" controls>
+                <source src="videos/puzzle2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <h3><span style="color: #ffd966">Watch the yellow chef from start to end.</span></h3>
+            <p><span style="color: #ffd966">Read Order → Take Ingredients → Chop Ingredients → Put in Steamboat → Wait → Plate it → Serve it → Wash Plate</span></p>
+            <h3>What is the 8-letter code? (no space)</h3>
+            <div id="puzzle-2-answer-container">
+                <input type="text" id="puzzle-2-answer" placeholder="Enter 8-letter code" maxlength="8">
+                <button id="submit-puzzle-2-answer-btn" class="btn">Submit</button>
+            </div>
+            <p id="puzzle-2-error-message" style="color: red; display: none;">Incorrect. Please try again.</p>
+            <div class="clue-section">
+                <img src="images/clue buddy.png" alt="Clue Buddy" class="clue-buddy">
+                <div id="hint-container">
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Clue 1</div>
+                        <div class="hint-content">
+                            <p>Each step in the kitchen process gives you one letter.<br>
+                            Watch how the <strong>yellow chef</strong> moves through the 8 steps — from reading the order to washing the plate.<br>
+                            For every action, find the matching <strong>letter tag</strong> in the video.<br>
+                            Put them together to unlock the 8-letter word.<br>
+                            The first letter is V.</p>
+                        </div>
+                    </div>
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Clue 2</div>
+                        <div class="hint-content">
+                            <p>v_ _ _ e _ _ d</p>
+                        </div>
+                    </div>
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Reveal Answer</div>
+                        <div class="hint-content">
+                            <p>valueadd</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="puzzle-2-back-btn" class="btn btn-gray">Back</button>
+                <button id="puzzle-2-next-puzzle-btn" class="btn" style="display: none;">Next</button>
+            </div>
+        </div>
+
+        <div id="puzzle-2-did-you-know-screen" style="display: none;">
+            <div class="info-box-container">
+                <div class="character-container">
+                    <img src="images/lean professor.png" alt="Lean Professor" class="character-img">
+                </div>
+                <div class="info-box">
+                    <h3>Did you know?</h3>
+                    <p>Value Stream Mapping (VSM) is like creating a GPS map of your work process - tracking every step from customer request to delivery, highlighting <strong>value-adding</strong> steps. </p>
+                    <p>It is important for Heidi to create a Value Stream Map of her kitchen operations to see the full picture of how orders flow from customers to food delivery, before making any changes.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Try this at work!</h3>
+                    <p>Map your process with sticky notes - track each step's duration and waiting times.</p>
+                    <p>You'll be surprised how much time is spent waiting versus doing actual work.</p>
+                    <p>Check out the next page for an example of a VSM!</p>
+                </div>
+            
+            </div>
+            <div class="button-group">
+                <button id="puzzle-2-did-you-know-back-btn" class="btn btn-gray">Back</button>
+                <button id="puzzle-2-did-you-know-next-btn" class="btn">Next</button>
+            </div>
+        </div>
+
+                <!-- Puzzle 2 - VSM Screen -->
+        <div id="puzzle-2-vsm-screen" style="display: none;">
+            <div class="vsm-image-container">
+                <img src="images/VSM.png"
+                     alt="Current State Value Stream Mapping"
+                     class="vsm-illustration">
+                <p class="vsm-caption">Current State Value Stream Mapping for The Lean Hideout kitchen</p>
+            </div>
+            <div class="button-group">
+                <button id="puzzle-2-vsm-back-btn" class="btn btn-gray">Back</button>
+                <button id="puzzle-2-vsm-next-btn" class="btn">Next</button>
+            </div>
+        </div>
+
+        <div id="puzzle-3-intro-screen" style="display: none;">
+            <div class="character-dialogue">
+                <div class="character-container">
+                    <img src="images/heidi stopwatch.png" alt="Worried turtle chef holding a stopwatch with tears on her cheeks." class="character-img">
+                </div>
+                <div class="dialogue-text">
+                    <h2>Heidi glances at her messy notes.</h2>
+                    <p>“Ugh, my stopwatch log got smudged! I only remember bits — some are numbers, others are symbols I scribbled down in a rush.”</p>
+                    <p>“Each symbol has a value. You’ll need to figure them out and calculate the <strong>Lead Time</strong> for <strong>Chop Ingredients</strong>.”</p>
+                    <p>Can you help her crack the code?</p>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="puzzle-3-intro-back-btn" class="btn btn-gray">Back</button>
+                <button id="puzzle-3-intro-next-btn" class="btn">Next</button>
+            </div>
+        </div>
+
+        <div id="puzzle-3-main-screen" style="display: none;">
+            <h2>Puzzle 3/4</h2>
+            <div class="puzzle-3-container">
+                <div class="puzzle-table-section">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Step</th>
+                                <th>Process Time (mins)</th>
+                                <th>Wait Time (mins)</th>
+                                <th>Lead Time (mins)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Read Order</td>
+                                <td>2</td>
+                                <td>▲</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Take Ingredients</td>
+                                <td>3</td>
+                                <td>◆</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Chop Ingredients</td>
+                                <td>▲</td>
+                                <td>5</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Put in Steamboat</td>
+                                <td>4</td>
+                                <td>●</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Wait for cooking</td>
+                                <td>0</td>
+                                <td>●</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Plate</td>
+                                <td>●</td>
+                                <td>2</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Serve</td>
+                                <td>3</td>
+                                <td>▲</td>
+                                <td class="lead-time"></td>
+                            </tr>
+                            <tr>
+                                <td>Wash Plate</td>
+                                <td>◆</td>
+                                <td>1</td>
+                                <td>12</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="heidi-clues">
+                        <h4>Heidi's Clues</h4>
+                        <p>📝 Process Time + Wait Time = Lead Time</p>
+                        <p>📝 1. Chop + Serve = Take + Read</p>
+                        <p>📝 2. Put in Steamboat + Wait = 24 minutes</p>
+                    </div>
+                </div>
+            </div>
+            <div class="puzzle-prompt">
+                <h3>What is the Lead Time for "Chop Ingredients”?</h3>
+                <input type="text" id="puzzle-3-answer" placeholder="Enter your answer">
+                <button id="submit-puzzle-3-answer-btn" class="btn">Submit</button>
+                <p id="puzzle-3-error-message" style="color: red; display: none;">Incorrect. Please try again.</p>
+            </div>
+            <div class="clue-section">
+                <img src="images/clue buddy.png" alt="Clue Buddy" class="clue-buddy">
+                <div id="hint-container">
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Clue 1</div>
+                        <div class="hint-content">
+                            <p>◆ + 1= 12</p>
+                            <!-- <p>Each symbol stands for a unique number between 5 and 15 minutes.</p>
+                            <p>You’ll need to decode them to reveal the true Lead Time.</p>
+                            <p>Try comparing the total times between rows — the clues are hidden in plain sight...</p> -->
+                        </div>
+                    </div>
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Clue 2</div>
+                        <div class="hint-content">
+                            <p>▲+ 5 +3 + ▲ = 3 + ◆ + 2+ ▲</p>
+                            <!-- <p>Ready to narrow it down?</p>
+                            <p>▲ = 8</p>
+                            <p>◆ = 11</p>
+                            <p>● = 10</p>
+                            <p>Now go back, fill them in, and sum up (Process + Wait) for all steps to unlock the total Lead Time.</p> -->
+                        </div>
+                    </div>
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Answer</div>
+                        <div class="hint-content">
+                            <p>Total Lead Time for “Chop Ingredients” = 13</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="puzzle-3-back-btn" class="btn btn-gray">Back</button>
+            </div>
+        </div>
+
+        <div id="puzzle-3-did-you-know-screen" style="display: none;">
+            <div class="info-box-container">
+                <div class="character-container">
+                    <img src="images/lean professor.png" alt="Lean Professor" class="character-img">
+                </div>
+                <div class="info-box">
+                    <h3>Did You Know?</h3>
+                    <p>Lead Time is your total journey time (like a food delivery from order to your doorstep). Process Time is the actual work time (cooking the food) and Wait Time is all the delays in between (waiting for the cook to start, food waiting for delivery pickup)!</p>
+                    <p>It is important for Heidi to understand the timing in her kitchen operations. While orders take 45 minutes to reach customers (Lead Time), the actual cooking (Process Time) might only be 15 minutes – making her wonder where the other 30 minutes go (Wait Time).</p>
+                </div>
+                <div class="info-box">
+                    <h3>Try this at work!</h3>
+                    <p>Want to discover where time really goes in your work? Try tracking with these three simple steps:</p>
+                    <ol>
+                        <li>How long customers wait in total (Lead Time)</li>
+                        <li>How long the actual work takes (Process Time)</li>
+                        <li>How long things sit waiting (Wait Time)</li>
+                    </ol>
+                    <p>Pick one process and time it. You'll be surprised to find how much time is spent waiting versus doing actual work!</p>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="puzzle-3-did-you-know-back-btn" class="btn btn-gray">Back</button>
+                <button id="puzzle-3-did-you-know-next-btn" class="btn">Next</button>
+            </div>
+        </div>
+
+        <div id="puzzle-4-intro-screen" style="display: none;">
+            <div class="character-dialogue">
+                <div class="character-container">
+                    <img src="images/heidi fishbone.png" alt="Heidi with fishbone diagram" class="character-img">
+                </div>
+                <div class="dialogue-text">
+                    <h2>Something's clearly off.</h2>
+                    <p>Heidi watches the kitchen chaos on playback — chefs darting, colliding, waiting, running back and forth.</p>
+                    <p><em>“Why does everything take so long… even when everyone’s working hard?”</em></p>
+                    <p>She pulls out her tablet and opens her Lean Hideout Kitchen Guide.</p>
+                    <p>"Let's identify these inefficiencies. Each one is costing us time and money.</p>
+                    <p>Find the secret 5-letter code by matching the kitchen conversation with the 4 empty boxes.</p>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="puzzle-4-intro-back-btn" class="btn btn-gray">Back</button>
+                <button id="puzzle-4-intro-next-btn" class="btn">Next</button>
+            </div>
+        </div>
+
+        <div id="puzzle-4-screen" style="display: none;">
+            <h2>Puzzle 4/4</h2>
+            <div id="puzzle-4-container">
+                <img src="images/Clean kitchen.png" alt="Kitchen Background" class="puzzle-background">
+                <div id="quotes-container">
+                    <!-- Draggable Quotes -->
+                    <div class="draggable-quote" id="chef-whine" draggable="true">
+                        <h4>chef <strong>W</strong>hine</h4>
+                        <p>“We’re all doing the same full cycle — no one's splitting tasks. So slow!”</p>
+                    </div>
+                    <div class="draggable-quote" id="chopping-clash" draggable="true">
+                        <h4>chopping cl<strong>A</strong>sh</h4>
+                        <p>“The board’s is too near to each other — we keep crashing into each other here.”</p>
+                    </div>
+                    <div class="draggable-quote" id="rotating-stove" draggable="true">
+                        <h4>rotating <strong>ST</strong>ove</h4>
+                        <p>“Only 2 of 4 stoves light up at a time. Takes time to move the pot to a working one”</p>
+                    </div>
+                    <div class="draggable-quote" id="ingredient-run" draggable="true">
+                        <h4>ingr<strong>E</strong>dient run</h4>
+                        <p>“I have to walk back and forth for ingredients - can’t pick up more than one at a time!”</p>
+                    </div>
+                    <div class="draggable-quote" id="clean-plate" draggable="true">
+                        <h4>clean <strong>P</strong>late</h4>
+                        <p>“The dessert taste so good.”</p>
+                    </div>
+                    <div class="draggable-quote" id="clean-sink" draggable="true">
+                        <h4>clean s<strong>I</strong>nk</h4>
+                        <p>“Plates are washed fast today — great job!”</p>
+                    </div>
+                    <div class="draggable-quote" id="golden-guardian" draggable="true">
+                        <h4>gol<strong>D</strong>en guardian</h4>
+                        <p>“The dragon watches over the broth with pride.”</p>
+                    </div>
+                    <div class="draggable-quote" id="lantern" draggable="true">
+                        <h4><strong>L</strong>antern</h4>
+                        <p>“Shining bright and steady as ever!”</p>
+                    </div>
+                    <div class="draggable-quote" id="zen-garden" draggable="true">
+                        <h4><strong>Z</strong>en garden</h4>
+                        <p>“A peaceful koi swims under the bridge...”</p>
+                    </div>
+                </div>
+            </div>
+            <div id="drop-zones-container">
+                <div class="drop-zone" id="intellect-zone">
+                    <p>Intelligence</p>
+                </div>
+                <div class="drop-zone" id="motion-zone">
+                    <p>Motion</p>
+                </div>
+                <div class="drop-zone" id="defects-zone">
+                    <p>Defects</p>
+                </div>
+                <div class="drop-zone" id="transport-zone">
+                    <p>Transport</p>
+                </div>
+            </div>
+            <h3>What is the 5-letter code?</h3>
+            <div id="puzzle-4-answer-container"> 
+                <input type="text" id="puzzle-4-answer" placeholder="Enter 5-letter code" maxlength="5">
+                <button id="submit-puzzle-4-answer-btn" class="btn">Submit</button>
+            </div>
+            <!-- <p id="puzzle-4-feedback" style="display: none;"></p> -->
+            <div class="clue-section">
+                <img src="images/clue buddy.png" alt="Clue Buddy" class="clue-buddy">
+                <div id="hint-container">
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Clue 1</div>
+                        <div class="hint-content">
+                            <p>Focus on the clues that describe inefficiencies. Ignore the red herrings like lanterns, desserts, or dragons.</p>
+                        </div>
+                    </div>
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Clue 2</div>
+                        <div class="hint-content">
+                            <p>You are categorising inefficiencies. Once you find the matching clue for each category, look for the capitalised letter in the clue. To unlock the final code, read the capital letters from left to right.</p>
+                        </div>
+                    </div>
+                    <div class="hint-box">
+                        <div class="hint-title">▸ Answer</div>
+                        <div class="hint-content">
+                            <p>waste</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="puzzle-4-back-btn" class="btn btn-gray">Back</button>
+            </div>
+        </div>
+
+        <div id="puzzle-4-did-you-know-screen" style="display: none;">
+            <div class="info-box-container">
+                <div class="character-container">
+                    <img src="images/lean professor.png" alt="Lean Professor" class="character-img">
+                </div>
+                <div class="info-box">
+                    <h3>Did You Know?</h3>
+                    <p>TIMWOODI represents the 8 common types of waste in any process: Transport, Inventory, Motion, Waiting, Over-production, Over-processing, Defects, and Intelligence. These wastes often hide in plain sight, eating up time and resources in your workplace!</p>
+                    <p>For example, in Heidi's kitchen, moving ingredients back and forth (Transport), inefficient task distribution (Intelligence), unnecessary movements (Motion), or faulty stoves (Defects) all add to wasted time and effort.</p>
+                </div>
+                <div class="info-box">
+                    <h3>Try this at work!</h3>
+                    <p>Spot the waste in your workplace:</p>
+                    <ul>
+                        <li>Pick one process you do daily</li>
+                        <li>Watch for any TIMWOODI wastes</li>
+                        <li>You'll be surprised how many hidden wastes you can find once you know what to look for!</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="puzzle-4-did-you-know-back-btn" class="btn btn-gray">Back</button>
+                <button id="puzzle-4-did-you-know-next-btn" class="btn">Next</button>
+            </div>
+        </div>
+
+        <div id="congratulations-screen" style="display: none;">
+            <div class="congrats-container">
+                <div class="congrats-left">
+                    <img src="images/heidi happy.png" alt="Happy Heidi">
+                </div>
+                <div class="congrats-right">
+                    <h2 style="text-align:left;">Congratulations!</h2>
+                    <p style="text-align:left;">By helping Heidi analyze her kitchen operations, you've discovered the key principles of lean improvement:</p>
+                    <p style="text-align:left;">Through Gemba walks and Value Stream Mapping, Heidi discovered the truth about her Lead Time: while cooking only takes 10 minutes, customers were waiting 45 minutes for their food! By identifying TIMWOODI wastes in her kitchen - from unnecessary movement to excess inventory - Heidi knew exactly what needed fixing.</p>
+                    <p style="text-align:left;">Remember: Sometimes the best solutions come from simply walking, watching, mapping, and identifying waste - just like Heidi did!</p>
+                    <p style="text-align:left;">Curious to learn more about Lean methodology and tools to improve your work processes? Deep dive into the new <strong>Lean e-learning: Tidying up with Marie Kaizen</strong> below to find out more!</p>
+                    <h3>Lucky draw code: 98615</h3>
+                    <div class="button-group">
+                        <a href="https://www.learn.gov.sg/Learning/BrowseDetails?ProgCode=DLC-E01INEL&LastEntry=" target="_blank" class="btn">Check out Lean e-Learning</a>
+                        <a href="https://form.gov.sg/683e40aecb4ece3b7c744da7" target="_blank" class="btn">Enter Innoflix lucky draw</a>
+                        <a href="https://form.gov.sg/6846a3327ae4d032d77ca61d" target="_blank" class="btn">Join our mailing list</a>
+                    </div>
+                </div>
+            </div>
+            <p class="disclaimer">This virtual puzzle quest includes content from Overcooked! 2 © 2018 Team17. Used with permission/under fair use for learning purposes.</p>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/puzzle-js@0.3.1/dist/puzzle.min.js"></script>
     <script src="script.js"></script>
+    <script src="jigsaw.js"></script>
+    <script src="puzzle4.js"></script>
 </body>
 </html>
